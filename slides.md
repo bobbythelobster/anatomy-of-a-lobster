@@ -194,6 +194,14 @@ Speaker notes (main points):
 
 ---
 
+## Disclaimer
+
+OpenClaw is updated every day — if not multiple times a day. With **5k+ open pull requests** as of writing this slide, the architecture is moving so fast that this information may already be out of date.
+
+The specifics may be wrong, but the high-level should remain intact.
+
+---
+
 ## Scope for this session
 
 Quick setup content is intentionally skipped.
