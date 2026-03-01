@@ -817,7 +817,13 @@ Speaker notes (main points):
 
 - `sessions.json` stores mutable session metadata
 - `<sessionId>.jsonl` stores append-only transcript history
-- Maintenance policies control prune/cap/rotate/disk-budget behavior
+- Directory path: `~/.openclaw/agents/<agentId>/sessions/`
+
+```text
+~/.openclaw/agents/<agentId>/sessions/
+  ├── sessions.json
+  └── <sessionId>.jsonl
+```
 
 > _Prompt context is temporary; session and memory files are durable._
 
@@ -826,6 +832,27 @@ Speaker notes (main points):
 - I separate runtime context from durable storage.
 - I explain jsonl transcripts as the forensic source of truth.
 - I mention that pruning/compaction optimizes prompts, not historical durability.
+-->
+---
+<!-- _header: "💾 State Plane (Sessions + Memory)" -->
+
+## Agent state and logs: where they live
+
+- Agent state directory: `~/.openclaw/agents/<agentId>/agent/`
+- Gateway logs (default): `/tmp/openclaw/openclaw-YYYY-MM-DD.log`
+- Cron state/logs: `~/.openclaw/cron/jobs.json` and `~/.openclaw/cron/runs/*.jsonl`
+
+```text
+~/.openclaw/agents/<agentId>/agent/
+/tmp/openclaw/openclaw-YYYY-MM-DD.log
+~/.openclaw/cron/
+```
+
+<!--
+Speaker notes (main points):
+- I explain that session history, agent runtime state, and logs are separate stores.
+- I call out per-agent isolation under `~/.openclaw/agents/<agentId>/...`.
+- I mention logs are JSONL by default and useful for debugging/forensics.
 -->
 ---
 <!-- _header: "" -->
