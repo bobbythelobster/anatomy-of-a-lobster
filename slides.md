@@ -586,12 +586,11 @@ Speaker notes (main points):
 
 <br>
 
-| | |
+| Resource | URL |
 |--|--|
 | 🌐 **Website** | openclaw.ai |
 | 📖 **Docs** | docs.openclaw.ai |
 | 🐙 **GitHub** | github.com/openclaw/openclaw |
-| 👾 **Community** | sdx.community |
 
 <br>
 
