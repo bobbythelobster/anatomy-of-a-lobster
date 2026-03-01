@@ -764,6 +764,7 @@ Speaker notes (main points):
 | 📖 **Docs** | docs.openclaw.ai |
 | 🐙 **GitHub** | github.com/openclaw/openclaw |
 | 🧩 **ClawHub** | clawhub.ai |
+| 📐 **Skills Spec** | agentskills.io |
 
 <br>
 
