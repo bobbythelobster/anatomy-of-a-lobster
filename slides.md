@@ -174,26 +174,6 @@ Speaker notes (main points):
 
 ---
 
-## What this audience asked for
-
-- How OpenClaw works **under the hood**
-- **Sub-agent orchestration** patterns that actually work
-- How to build **independent, extensible agents**
-- How to improve **memory + capability** over time
-
-<br>
-
-> _This deck is organized around those four asks._
-
-<!--
-Speaker notes (main points):
-- I confirm this content came from audience interest areas.
-- I emphasize relevance: we are solving the questions they actually asked.
-- I transition into scope slide.
--->
-
----
-
 ## Disclaimer
 
 OpenClaw is updated every day — if not multiple times a day. With **5k+ open pull requests** as of writing this slide, the architecture is moving so fast that this information may already be out of date.
