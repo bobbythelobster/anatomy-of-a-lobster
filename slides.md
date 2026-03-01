@@ -347,6 +347,8 @@ Speaker notes (main points):
 - I explain that skills package repeatable patterns on top of tools.
 - I emphasize that policy gates these actions for safety and control.
 - I tie it back to architecture: reasoning matters only when execution is reliable.
+- I note that plugins can register additional tools beyond the built-in set.
+- I position skills as the redistribution mechanism for agent feature sets — they're the NPM packages of the agent ecosystem.
 -->
 ---
 <!-- _header: "" -->
