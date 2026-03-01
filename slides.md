@@ -159,6 +159,19 @@ By Sam Holmes
 
 ---
 
+## What this audience asked for (from RSVP data)
+
+- How OpenClaw works **under the hood**
+- **Sub-agent orchestration** patterns that actually work
+- How to build **independent, extensible agents**
+- How to improve **memory + capability** over time
+
+<br>
+
+> _This deck is organized around those four asks._
+
+---
+
 <!-- _footer: "" -->
 
 # 🔧 Under the Hood
@@ -169,6 +182,17 @@ By Sam Holmes
 
 ---
 
+## Question → Answer (Section 1)
+
+**Q:** “How does it actually work under the hood?”
+
+**A:** We’ll map the core path end-to-end:
+- Gateway and channel routing
+- Session/runtime boundaries
+- Workspace contract and tool execution model
+
+---
+
 ## Assumptions for this talk
 
 You already know OpenClaw basics. So we’ll skip setup and focus on internals.
@@ -176,6 +200,7 @@ You already know OpenClaw basics. So we’ll skip setup and focus on internals.
 - ✅ You’ve installed and run it before
 - ✅ You understand channels + agent replies
 - ✅ You want deeper architecture and patterns
+- ✅ Post-break audience is self-selected builders, so we’ll go practical and deep
 
 <br>
 
@@ -252,6 +277,17 @@ One gateway. Many channels. One agent brain.
 <br>
 
 <div class="section-label">Section 2 of 4</div>
+
+---
+
+## Question → Answer (Section 2)
+
+**Q:** “How does sub-agent orchestration work in practice?”
+
+**A:** We’ll cover the concrete mechanics:
+- Deterministic routing + bindings
+- `sessions_spawn` isolation model
+- Parallel execution with safe result return
 
 ---
 
@@ -348,6 +384,17 @@ Main agent
 
 ---
 
+## Question → Answer (Section 3)
+
+**Q:** “How do I build independent agents I can replicate?”
+
+**A:** We’ll break it down into a reusable blueprint:
+- Workspace contract
+- Bindings + model profile
+- Skills + safety boundaries
+
+---
+
 ## Skills
 
 **Packaged capabilities** — drop in, wire up, use immediately
@@ -381,6 +428,22 @@ Main agent
 | `MEMORY.md` | Long-term curated memory |
 
 > _Change the files → change the agent. No redeployment needed._
+
+---
+
+## Independent Agent Blueprint (copy this)
+
+| Component | What to define |
+|---|---|
+| Workspace | Dedicated folder for each agent (`~/.openclaw/<agent-name>/`) |
+| Identity files | `AGENTS.md`, `SOUL.md`, `USER.md`, `TOOLS.md`, `MEMORY.md` |
+| Routing | Channel/user/guild bindings in gateway config |
+| Model profile | Default model + optional escalation strategy |
+| Skills | Minimal starter pack (1-3 skills) tied to mission |
+| Boundaries | Tool allowlists, approval rules, sensitive-action gates |
+| Ops loop | Heartbeat checklist + cron for proactive tasks |
+
+> _If you can define these seven, you can replicate agents reliably._
 
 ---
 
@@ -432,24 +495,39 @@ Each has:
 
 ---
 
-## Memory System
+## Question → Answer (Section 4)
 
-**How agents remember across sessions**
+**Q:** “How are people enhancing memory and capability in real deployments?”
+
+**A:** We’ll walk through practical patterns:
+- Multi-contact and group memory organization
+- Distillation from daily logs to long-term memory
+- Retrieval patterns that keep context focused
+
+---
+
+## Memory Pattern: Multi-Contact + Group Context
+
+**How agents remember cleanly across people and channels**
 
 ```
-Short-term (session)          Long-term (files)
-─────────────────────         ──────────────────
-Context window                MEMORY.md
-  └── recent messages           └── curated facts, lessons
+Short-term (session)                 Long-term (structured files)
+─────────────────────                ─────────────────────────────
+Context window                       MEMORY.md
+  └── recent turn state                └── curated durable facts
 
-Daily logs                    Semantic search
-memory/2026-02-26.md            memory_search("what did we discuss")
-  └── raw events               memory_get("user preferences")
+Per-contact memory                   Per-group memory
+memory/contacts/<id>.md              memory/groups/<id>.md
+  └── preferences, history             └── shared context, norms
+
+Daily logs                           Retrieval layer
+memory/YYYY-MM-DD.md                 memory_search("topic")
+  └── raw events                       memory_get("preference")
 ```
 
-- **No vector DB required** — markdown + semantic search
-- Memory files are readable, editable, version-controllable
-- Heartbeat maintenance: agent distills daily logs → MEMORY.md
+- Organize memory by **contact + group**, not one giant file
+- Distill daily logs into durable memory during heartbeat passes
+- Keep memory readable/editable so behavior stays auditable
 
 ---
 
@@ -502,5 +580,7 @@ openclaw hook register --event push --agent devbot --channel discord
 | 👾 **Community** | sdx.community |
 
 <br>
+
+**Builder CTA:** Start with one agent, one skill, and one heartbeat loop.
 
 _Questions? Ask the lobster._

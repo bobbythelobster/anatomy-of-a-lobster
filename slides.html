@@ -141,7 +141,7 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" class="center" data-marpit-pagination="1" style="--paginate:true;--background-color:#000000;--class:center;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
 <p><img src="anatomy-of-a-lobster.png" alt="" style="width:500px;" /></p>
 <p>By Sam Holmes</p>
 </section>
@@ -278,7 +278,7 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="2" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
 <h2 id="agenda">Agenda</h2>
 <ol>
 <li><img class="emoji" draggable="false" alt="🔧" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f527.svg" data-marp-twemoji=""/> <strong>Under the Hood</strong> — Architecture, gateway, agent runtime</li>
@@ -424,10 +424,18 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="3" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h1 id="%F0%9F%94%A7-under-the-hood"><img class="emoji" draggable="false" alt="🔧" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f527.svg" data-marp-twemoji=""/> Under the Hood</h1>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="what-this-audience-asked-for-from-rsvp-data">What this audience asked for (from RSVP data)</h2>
+<ul>
+<li>How OpenClaw works <strong>under the hood</strong></li>
+<li><strong>Sub-agent orchestration</strong> patterns that actually work</li>
+<li>How to build <strong>independent, extensible agents</strong></li>
+<li>How to improve <strong>memory + capability</strong> over time</li>
+</ul>
 <br />
-<div class="section-label">Section 1 of 4</div>
+<blockquote>
+<p><em>This deck is organized around those four asks.</em></p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -562,21 +570,10 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="4" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="assumptions-for-this-talk">Assumptions for this talk</h2>
-<p>You already know OpenClaw basics. So we’ll skip setup and focus on internals.</p>
-<ul>
-<li><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> You’ve installed and run it before</li>
-<li><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> You understand channels + agent replies</li>
-<li><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> You want deeper architecture and patterns</li>
-</ul>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h1 id="%F0%9F%94%A7-under-the-hood"><img class="emoji" draggable="false" alt="🔧" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f527.svg" data-marp-twemoji=""/> Under the Hood</h1>
 <br />
-<p><strong>Today’s focus:</strong></p>
-<ol>
-<li>How routing + runtime actually work</li>
-<li>How to orchestrate sub-agents safely</li>
-<li>How to extend with skills and memory patterns</li>
-</ol>
+<div class="section-label">Section 1 of 4</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -711,19 +708,15 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="5" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="architecture">Architecture</h2>
-<div class="diagram">
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>  <img class="emoji" draggable="false" alt="📱" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4f1.svg" data-marp-twemoji=""/> Chat Apps          <img class="emoji" draggable="false" alt="🌐" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f310.svg" data-marp-twemoji=""/> Gateway            <img class="emoji" draggable="false" alt="🤖" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f916.svg" data-marp-twemoji=""/> Agent Runtime
-  ─────────────        ───────────            ─────────────────
-  Telegram    ─┐                              ┌─ Workspace
-  WhatsApp    ─┤──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>  WebSocket  ──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>  LLM  ──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>├─ Tools
-  Discord     ─┤     Sessions                 ├─ Skills
-  iMessage    ─┤     Routing                  └─ Memory
-  Signal      ─┘     Channels
-</code></pre>
-</div>
-<p>One gateway. Many channels. One agent brain.</p>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="question-%E2%86%92-answer-section-1">Question → Answer (Section 1)</h2>
+<p><strong>Q:</strong> “How does it actually work under the hood?”</p>
+<p><strong>A:</strong> We’ll map the core path end-to-end:</p>
+<ul>
+<li>Gateway and channel routing</li>
+<li>Session/runtime boundaries</li>
+<li>Workspace contract and tool execution model</li>
+</ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -858,22 +851,22 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="6" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="the-gateway">The Gateway</h2>
-<p><strong>WebSocket-based</strong> message broker + session manager</p>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="assumptions-for-this-talk">Assumptions for this talk</h2>
+<p>You already know OpenClaw basics. So we’ll skip setup and focus on internals.</p>
 <ul>
-<li><strong>Channels</strong>: Telegram, Discord, WhatsApp, iMessage, Signal, Slack, Email...</li>
-<li><strong>Sessions</strong>: per-user context, auth profiles, history</li>
-<li><strong>Routing</strong>: deterministic binding rules → right message to right agent</li>
-<li><strong>Heartbeats</strong>: scheduled pings to keep agents proactive</li>
+<li><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> You’ve installed and run it before</li>
+<li><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> You understand channels + agent replies</li>
+<li><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> You want deeper architecture and patterns</li>
+<li><img class="emoji" draggable="false" alt="✅" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/2705.svg" data-marp-twemoji=""/> Post-break audience is self-selected builders, so we’ll go practical and deep</li>
 </ul>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;channels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;telegram&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;token&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;...&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;agentId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;main&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;discord&quot;</span><span class="hljs-punctuation">:</span>  <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;token&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;...&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;agentId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;main&quot;</span> <span class="hljs-punctuation">}</span>
-  <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span>
-</code></pre>
+<br />
+<p><strong>Today’s focus:</strong></p>
+<ol>
+<li>How routing + runtime actually work</li>
+<li>How to orchestrate sub-agents safely</li>
+<li>How to extend with skills and memory patterns</li>
+</ol>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -1008,21 +1001,19 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="7" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="agent-runtime">Agent Runtime</h2>
-<p><strong>The brain</strong> — everything your agent knows and can do</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>~/.openclaw/workspace/
-  ├── AGENTS.md     ← operating instructions
-  ├── SOUL.md       ← persona &amp; personality
-  ├── USER.md       ← who you're helping
-  ├── TOOLS.md      ← local env notes
-  ├── MEMORY.md     ← long-term memory
-  └── memory/       ← daily logs
-      └── 2026-02-26.md
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="architecture">Architecture</h2>
+<div class="diagram">
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>  <img class="emoji" draggable="false" alt="📱" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4f1.svg" data-marp-twemoji=""/> Chat Apps          <img class="emoji" draggable="false" alt="🌐" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f310.svg" data-marp-twemoji=""/> Gateway            <img class="emoji" draggable="false" alt="🤖" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f916.svg" data-marp-twemoji=""/> Agent Runtime
+  ─────────────        ───────────            ─────────────────
+  Telegram    ─┐                              ┌─ Workspace
+  WhatsApp    ─┤──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>  WebSocket  ──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>  LLM  ──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>├─ Tools
+  Discord     ─┤     Sessions                 ├─ Skills
+  iMessage    ─┤     Routing                  └─ Memory
+  Signal      ─┘     Channels
 </code></pre>
-<blockquote>
-<p><em>Files are the interface. Readable, editable, version-controlled.</em></p>
-</blockquote>
+</div>
+<p>One gateway. Many channels. One agent brain.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -1157,10 +1148,22 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="8" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h1 id="%F0%9F%A7%A0-orchestration--agentic-patterns"><img class="emoji" draggable="false" alt="🧠" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f9e0.svg" data-marp-twemoji=""/> Orchestration &amp; Agentic Patterns</h1>
-<br />
-<div class="section-label">Section 2 of 4</div>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="the-gateway">The Gateway</h2>
+<p><strong>WebSocket-based</strong> message broker + session manager</p>
+<ul>
+<li><strong>Channels</strong>: Telegram, Discord, WhatsApp, iMessage, Signal, Slack, Email...</li>
+<li><strong>Sessions</strong>: per-user context, auth profiles, history</li>
+<li><strong>Routing</strong>: deterministic binding rules → right message to right agent</li>
+<li><strong>Heartbeats</strong>: scheduled pings to keep agents proactive</li>
+</ul>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;channels&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;telegram&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;token&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;...&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;agentId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;main&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;discord&quot;</span><span class="hljs-punctuation">:</span>  <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;token&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;...&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;agentId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;main&quot;</span> <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -1295,22 +1298,21 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="9" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="multi-agent-routing">Multi-Agent Routing</h2>
-<p>One gateway → <strong>many agents</strong>, each isolated</p>
-<ul>
-<li>Each agent has its own workspace, session history, auth profile</li>
-<li>Route by channel, user, guild, or custom rule</li>
-<li>Agents can have different models, personas, capabilities</li>
-</ul>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;agents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
-    <span class="hljs-attr">&quot;main&quot;</span><span class="hljs-punctuation">:</span>   <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;workspace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~/.openclaw/workspace&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;devbot&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;workspace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~/.openclaw/devbot&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-attr">&quot;edgar&quot;</span><span class="hljs-punctuation">:</span>  <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;workspace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~/.openclaw/edgar&quot;</span> <span class="hljs-punctuation">}</span>
-  <span class="hljs-punctuation">}</span>
-<span class="hljs-punctuation">}</span>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="agent-runtime">Agent Runtime</h2>
+<p><strong>The brain</strong> — everything your agent knows and can do</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>~/.openclaw/workspace/
+  ├── AGENTS.md     ← operating instructions
+  ├── SOUL.md       ← persona &amp; personality
+  ├── USER.md       ← who you're helping
+  ├── TOOLS.md      ← local env notes
+  ├── MEMORY.md     ← long-term memory
+  └── memory/       ← daily logs
+      └── 2026-02-26.md
 </code></pre>
+<blockquote>
+<p><em>Files are the interface. Readable, editable, version-controlled.</em></p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -1445,24 +1447,10 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="10" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="bindings-deterministic-routing">Bindings: Deterministic Routing</h2>
-<p><strong>How a message finds its agent</strong></p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Incoming message
-      │
-      ▼
-  Peer match?  ──yes──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>  peer agent
-      │ no
-      ▼
-  Guild match? ──yes──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>  guild agent
-      │ no
-      ▼
-  Account match? ─yes──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> account agent
-      │ no
-      ▼
-  Channel default ──────<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> fallback agent
-</code></pre>
-<p>Predictable. Inspectable. No magic.</p>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h1 id="%F0%9F%A7%A0-orchestration--agentic-patterns"><img class="emoji" draggable="false" alt="🧠" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f9e0.svg" data-marp-twemoji=""/> Orchestration &amp; Agentic Patterns</h1>
+<br />
+<div class="section-label">Section 2 of 4</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -1597,21 +1585,14 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="11" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="sub-agent-spawning">Sub-Agent Spawning</h2>
-<p><strong>Parallel work, isolated context</strong></p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Main agent
-    │
-    ├──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> subagent: &quot;research X&quot;     ─┐
-    ├──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> subagent: &quot;write Y&quot;         ├── run in parallel
-    └──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> subagent: &quot;deploy Z&quot;       ─┘
-              │
-              └──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> auto-announce on completion
-</code></pre>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="question-%E2%86%92-answer-section-2">Question → Answer (Section 2)</h2>
+<p><strong>Q:</strong> “How does sub-agent orchestration work in practice?”</p>
+<p><strong>A:</strong> We’ll cover the concrete mechanics:</p>
 <ul>
-<li><code>sessions_spawn</code> creates isolated child session</li>
-<li>Sub-agents get their own context window</li>
-<li>Results push back automatically — no polling</li>
+<li>Deterministic routing + bindings</li>
+<li><code>sessions_spawn</code> isolation model</li>
+<li>Parallel execution with safe result return</li>
 </ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
@@ -1747,19 +1728,20 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="12" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="cron--heartbeats">Cron &amp; Heartbeats</h2>
-<p><strong>Proactive agents that don't wait to be asked</strong></p>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="multi-agent-routing">Multi-Agent Routing</h2>
+<p>One gateway → <strong>many agents</strong>, each isolated</p>
 <ul>
-<li><strong>Heartbeats</strong>: periodic pings → check email, calendar, alerts</li>
-<li><strong>Cron</strong>: precise schedules → &quot;every Monday 9am, send standup&quot;</li>
-<li><strong>Background work</strong>: commits, reports, monitoring while you sleep</li>
+<li>Each agent has its own workspace, session history, auth profile</li>
+<li>Route by channel, user, guild, or custom rule</li>
+<li>Agents can have different models, personas, capabilities</li>
 </ul>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-json"><span class="hljs-punctuation">{</span>
-  <span class="hljs-attr">&quot;cron&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
-    <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;schedule&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0 9 * * 1&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;prompt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Send weekly standup&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;channel&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;telegram&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
-    <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;schedule&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;*/30 * * * *&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;prompt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;HEARTBEAT_MD&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;model&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;haiku&quot;</span> <span class="hljs-punctuation">}</span>
-  <span class="hljs-punctuation">]</span>
+  <span class="hljs-attr">&quot;agents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;main&quot;</span><span class="hljs-punctuation">:</span>   <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;workspace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~/.openclaw/workspace&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;devbot&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;workspace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~/.openclaw/devbot&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;edgar&quot;</span><span class="hljs-punctuation">:</span>  <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;workspace&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;~/.openclaw/edgar&quot;</span> <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
 <span class="hljs-punctuation">}</span>
 </code></pre>
 </section>
@@ -1896,10 +1878,24 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="13" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h1 id="%F0%9F%9B%A0%EF%B8%8F-building--extending"><img class="emoji" draggable="false" alt="🛠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f6e0.svg" data-marp-twemoji=""/> Building &amp; Extending</h1>
-<br />
-<div class="section-label">Section 3 of 4</div>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="bindings-deterministic-routing">Bindings: Deterministic Routing</h2>
+<p><strong>How a message finds its agent</strong></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Incoming message
+      │
+      ▼
+  Peer match?  ──yes──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>  peer agent
+      │ no
+      ▼
+  Guild match? ──yes──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/>  guild agent
+      │ no
+      ▼
+  Account match? ─yes──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> account agent
+      │ no
+      ▼
+  Channel default ──────<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> fallback agent
+</code></pre>
+<p>Predictable. Inspectable. No magic.</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -2034,23 +2030,22 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="14" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="skills">Skills</h2>
-<p><strong>Packaged capabilities</strong> — drop in, wire up, use immediately</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>~/.openclaw/workspace/skills/
-  └── weather/
-      ├── SKILL.md      ← instructions for the agent
-      ├── get-weather.sh
-      └── parse.py
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="sub-agent-spawning">Sub-Agent Spawning</h2>
+<p><strong>Parallel work, isolated context</strong></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Main agent
+    │
+    ├──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> subagent: &quot;research X&quot;     ─┐
+    ├──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> subagent: &quot;write Y&quot;         ├── run in parallel
+    └──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> subagent: &quot;deploy Z&quot;       ─┘
+              │
+              └──<img class="emoji" draggable="false" alt="▶" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/25b6.svg" data-marp-twemoji=""/> auto-announce on completion
 </code></pre>
 <ul>
-<li>Install from <strong>ClawHub</strong>: <code>clawhub install weather</code></li>
-<li>Or write your own — it's just a directory + markdown</li>
-<li>Agent reads <code>SKILL.md</code> and knows how to use it</li>
+<li><code>sessions_spawn</code> creates isolated child session</li>
+<li>Sub-agents get their own context window</li>
+<li>Results push back automatically — no polling</li>
 </ul>
-<blockquote>
-<p><em>Skills = tools + docs bundled together</em></p>
-</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -2185,42 +2180,21 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="15" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="agent-workspace-contract">Agent Workspace Contract</h2>
-<p><strong>The files that define an agent</strong></p>
-<table>
-<thead>
-<tr>
-<th>File</th>
-<th>Purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>AGENTS.md</code></td>
-<td>How to behave, what rules to follow</td>
-</tr>
-<tr>
-<td><code>SOUL.md</code></td>
-<td>Persona, tone, personality</td>
-</tr>
-<tr>
-<td><code>USER.md</code></td>
-<td>Who you're talking to</td>
-</tr>
-<tr>
-<td><code>TOOLS.md</code></td>
-<td>Local env: cameras, SSH, voice prefs</td>
-</tr>
-<tr>
-<td><code>MEMORY.md</code></td>
-<td>Long-term curated memory</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><em>Change the files → change the agent. No redeployment needed.</em></p>
-</blockquote>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="cron--heartbeats">Cron &amp; Heartbeats</h2>
+<p><strong>Proactive agents that don't wait to be asked</strong></p>
+<ul>
+<li><strong>Heartbeats</strong>: periodic pings → check email, calendar, alerts</li>
+<li><strong>Cron</strong>: precise schedules → &quot;every Monday 9am, send standup&quot;</li>
+<li><strong>Background work</strong>: commits, reports, monitoring while you sleep</li>
+</ul>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;cron&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span>
+    <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;schedule&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;0 9 * * 1&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;prompt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;Send weekly standup&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;channel&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;telegram&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;schedule&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;*/30 * * * *&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;prompt&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;HEARTBEAT_MD&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;model&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;haiku&quot;</span> <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">]</span>
+<span class="hljs-punctuation">}</span>
+</code></pre>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -2355,20 +2329,10 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="16" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="the-tool-system">The Tool System</h2>
-<p><strong>What agents can actually do</strong></p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Built-in tools
-  read / write / edit / exec    ← filesystem &amp; shell
-  browser                       ← full web automation
-  canvas                        ← visual surfaces
-  nodes                         ← paired mobile devices
-  message                       ← send to channels
-  image / tts                   ← media generation
-  web_fetch                     ← lightweight web access
-
-+ Skill tools (custom scripts via SKILL.md)
-</code></pre>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h1 id="%F0%9F%9B%A0%EF%B8%8F-building--extending"><img class="emoji" draggable="false" alt="🛠️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f6e0.svg" data-marp-twemoji=""/> Building &amp; Extending</h1>
+<br />
+<div class="section-label">Section 3 of 4</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -2503,20 +2467,15 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="17" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="multi-agent-setup-in-practice">Multi-Agent Setup in Practice</h2>
-<p><strong>One gateway, many personalities</strong></p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>openclaw.json
-  ├── agent: &quot;main&quot;   → Claudine <img class="emoji" draggable="false" alt="🌸" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f338.svg" data-marp-twemoji=""/>  (personal assistant)
-  ├── agent: &quot;edgar&quot;  → Edgar <img class="emoji" draggable="false" alt="🤖" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f916.svg" data-marp-twemoji=""/>     (dev/ops agent)
-  └── agent: &quot;devbot&quot; → DevBot <img class="emoji" draggable="false" alt="🔧" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f527.svg" data-marp-twemoji=""/>    (discord community bot)
-
-Each has:
-  • own workspace &amp; memory
-  • own model config
-  • own channel bindings
-  • own skill set
-</code></pre>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="question-%E2%86%92-answer-section-3">Question → Answer (Section 3)</h2>
+<p><strong>Q:</strong> “How do I build independent agents I can replicate?”</p>
+<p><strong>A:</strong> We’ll break it down into a reusable blueprint:</p>
+<ul>
+<li>Workspace contract</li>
+<li>Bindings + model profile</li>
+<li>Skills + safety boundaries</li>
+</ul>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -2651,10 +2610,23 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="18" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h1 id="%F0%9F%92%BE-memory--advanced-patterns"><img class="emoji" draggable="false" alt="💾" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4be.svg" data-marp-twemoji=""/> Memory &amp; Advanced Patterns</h1>
-<br />
-<div class="section-label">Section 4 of 4</div>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="skills">Skills</h2>
+<p><strong>Packaged capabilities</strong> — drop in, wire up, use immediately</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>~/.openclaw/workspace/skills/
+  └── weather/
+      ├── SKILL.md      ← instructions for the agent
+      ├── get-weather.sh
+      └── parse.py
+</code></pre>
+<ul>
+<li>Install from <strong>ClawHub</strong>: <code>clawhub install weather</code></li>
+<li>Or write your own — it's just a directory + markdown</li>
+<li>Agent reads <code>SKILL.md</code> and knows how to use it</li>
+</ul>
+<blockquote>
+<p><em>Skills = tools + docs bundled together</em></p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="19" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -2789,23 +2761,42 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="19" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="memory-system">Memory System</h2>
-<p><strong>How agents remember across sessions</strong></p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Short-term (session)          Long-term (files)
-─────────────────────         ──────────────────
-Context window                MEMORY.md
-  └── recent messages           └── curated facts, lessons
-
-Daily logs                    Semantic search
-memory/2026-02-26.md            memory_search(&quot;what did we discuss&quot;)
-  └── raw events               memory_get(&quot;user preferences&quot;)
-</code></pre>
-<ul>
-<li><strong>No vector DB required</strong> — markdown + semantic search</li>
-<li>Memory files are readable, editable, version-controllable</li>
-<li>Heartbeat maintenance: agent distills daily logs → MEMORY.md</li>
-</ul>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="agent-workspace-contract">Agent Workspace Contract</h2>
+<p><strong>The files that define an agent</strong></p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AGENTS.md</code></td>
+<td>How to behave, what rules to follow</td>
+</tr>
+<tr>
+<td><code>SOUL.md</code></td>
+<td>Persona, tone, personality</td>
+</tr>
+<tr>
+<td><code>USER.md</code></td>
+<td>Who you're talking to</td>
+</tr>
+<tr>
+<td><code>TOOLS.md</code></td>
+<td>Local env: cameras, SSH, voice prefs</td>
+</tr>
+<tr>
+<td><code>MEMORY.md</code></td>
+<td>Long-term curated memory</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>Change the files → change the agent. No redeployment needed.</em></p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -2940,20 +2931,49 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="20" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="context-management">Context Management</h2>
-<p><strong>Keeping the agent sharp over long sessions</strong></p>
-<ul>
-<li><strong>Compaction</strong>: summarize older context, preserve key facts</li>
-<li><strong>Session pruning</strong>: drop irrelevant history, keep signal</li>
-<li><strong>Context window budget</strong>: models vary — manage proactively</li>
-</ul>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Strategies:
-  ✓ Load only relevant memory files per session type
-  ✓ Use haiku for lightweight tasks (10x cheaper)
-  ✓ Sub-agents for isolated work → don't bloat main context
-  ✓ Heartbeat model: haiku | main chat: sonnet | deep work: opus
-</code></pre>
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="independent-agent-blueprint-copy-this">Independent Agent Blueprint (copy this)</h2>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>What to define</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Workspace</td>
+<td>Dedicated folder for each agent (<code>~/.openclaw/&lt;agent-name&gt;/</code>)</td>
+</tr>
+<tr>
+<td>Identity files</td>
+<td><code>AGENTS.md</code>, <code>SOUL.md</code>, <code>USER.md</code>, <code>TOOLS.md</code>, <code>MEMORY.md</code></td>
+</tr>
+<tr>
+<td>Routing</td>
+<td>Channel/user/guild bindings in gateway config</td>
+</tr>
+<tr>
+<td>Model profile</td>
+<td>Default model + optional escalation strategy</td>
+</tr>
+<tr>
+<td>Skills</td>
+<td>Minimal starter pack (1-3 skills) tied to mission</td>
+</tr>
+<tr>
+<td>Boundaries</td>
+<td>Tool allowlists, approval rules, sensitive-action gates</td>
+</tr>
+<tr>
+<td>Ops loop</td>
+<td>Heartbeat checklist + cron for proactive tasks</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><em>If you can define these seven, you can replicate agents reliably.</em></p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="21" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
@@ -3088,21 +3108,22 @@ section.center {
   margin-bottom: 8px;
 }
 " lang="en-US" data-marpit-pagination="21" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
-<h2 id="advanced-patterns">Advanced Patterns</h2>
-<p><strong>The full surface area</strong></p>
-<ul>
-<li><img class="emoji" draggable="false" alt="📡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4e1.svg" data-marp-twemoji=""/> <strong>Webhooks &amp; hooks</strong> — trigger agents from external events</li>
-<li><img class="emoji" draggable="false" alt="📱" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4f1.svg" data-marp-twemoji=""/> <strong>Mobile nodes</strong> — iOS/Android paired devices (camera, screen, location)</li>
-<li><img class="emoji" draggable="false" alt="🖼️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5bc.svg" data-marp-twemoji=""/> <strong>Canvas surfaces</strong> — agent-rendered UI overlays</li>
-<li><img class="emoji" draggable="false" alt="🌐" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f310.svg" data-marp-twemoji=""/> <strong>Browser automation</strong> — Playwright-powered web control</li>
-<li><img class="emoji" draggable="false" alt="🔁" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f501.svg" data-marp-twemoji=""/> <strong>Agent-to-agent</strong> — agents spawning agents, async pipelines</li>
-</ul>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-comment"># Example: agent triggered by GitHub webhook</span>
-openclaw hook register --event push --agent devbot --channel discord
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="the-tool-system">The Tool System</h2>
+<p><strong>What agents can actually do</strong></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Built-in tools
+  read / write / edit / exec    ← filesystem &amp; shell
+  browser                       ← full web automation
+  canvas                        ← visual surfaces
+  nodes                         ← paired mobile devices
+  message                       ← send to channels
+  image / tts                   ← media generation
+  web_fetch                     ← lightweight web access
+
++ Skill tools (custom scripts via SKILL.md)
 </code></pre>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-background-color="#000000" data-class="center" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="22" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
 
 section {
   position: relative;
@@ -3234,8 +3255,887 @@ section.center {
   opacity: 0.6;
   margin-bottom: 8px;
 }
-" lang="en-US" class="center" data-marpit-pagination="22" style="--paginate:true;--background-color:#000000;--class:center;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
-;background-color:#000000;background-image:none;" data-marpit-pagination-total="22">
+" lang="en-US" data-marpit-pagination="22" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="multi-agent-setup-in-practice">Multi-Agent Setup in Practice</h2>
+<p><strong>One gateway, many personalities</strong></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>openclaw.json
+  ├── agent: &quot;main&quot;   → Claudine <img class="emoji" draggable="false" alt="🌸" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f338.svg" data-marp-twemoji=""/>  (personal assistant)
+  ├── agent: &quot;edgar&quot;  → Edgar <img class="emoji" draggable="false" alt="🤖" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f916.svg" data-marp-twemoji=""/>     (dev/ops agent)
+  └── agent: &quot;devbot&quot; → DevBot <img class="emoji" draggable="false" alt="🔧" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f527.svg" data-marp-twemoji=""/>    (discord community bot)
+
+Each has:
+  • own workspace &amp; memory
+  • own model config
+  • own channel bindings
+  • own skill set
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="23" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
+
+section {
+  position: relative;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  padding: 64px 72px 88px 72px;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  bottom: 20px;
+  width: 180px;
+  height: 56px;
+  background: url('data:image/png;base64,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') no-repeat left bottom;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, blockquote, th, td, a, strong, em {
+  color: #ffffff;
+}
+
+section table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #000000 !important;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  outline: none;
+}
+
+section table th:first-child,
+section table td:first-child {
+  width: 28%;
+}
+
+section table th:nth-child(2),
+section table td:nth-child(2) {
+  width: 72%;
+}
+
+section th,
+section td {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  padding: 10px 12px;
+  text-align: left;
+  text-shadow: none;
+}
+
+section th {
+  background: #0b0b0b !important;
+  font-weight: 700;
+}
+
+section pre {
+  background: rgba(0, 0, 0, 0.58);
+  color: #f4f7ff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-shadow: none;
+}
+
+section pre code {
+  background: transparent;
+  color: inherit;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+li { margin-bottom: 8px; }
+
+.title-slide h1 {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+section.center {
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  padding: 2px 12px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.diagram {
+  font-family: monospace;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 18px;
+  text-shadow: none;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.highlight {
+  color: #f9c74f;
+  text-shadow: 0 0 12px rgba(249,199,79,0.4);
+}
+
+.section-label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+" lang="en-US" data-marpit-pagination="23" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h1 id="%F0%9F%92%BE-memory--advanced-patterns"><img class="emoji" draggable="false" alt="💾" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4be.svg" data-marp-twemoji=""/> Memory &amp; Advanced Patterns</h1>
+<br />
+<div class="section-label">Section 4 of 4</div>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
+
+section {
+  position: relative;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  padding: 64px 72px 88px 72px;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  bottom: 20px;
+  width: 180px;
+  height: 56px;
+  background: url('data:image/png;base64,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') no-repeat left bottom;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, blockquote, th, td, a, strong, em {
+  color: #ffffff;
+}
+
+section table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #000000 !important;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  outline: none;
+}
+
+section table th:first-child,
+section table td:first-child {
+  width: 28%;
+}
+
+section table th:nth-child(2),
+section table td:nth-child(2) {
+  width: 72%;
+}
+
+section th,
+section td {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  padding: 10px 12px;
+  text-align: left;
+  text-shadow: none;
+}
+
+section th {
+  background: #0b0b0b !important;
+  font-weight: 700;
+}
+
+section pre {
+  background: rgba(0, 0, 0, 0.58);
+  color: #f4f7ff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-shadow: none;
+}
+
+section pre code {
+  background: transparent;
+  color: inherit;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+li { margin-bottom: 8px; }
+
+.title-slide h1 {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+section.center {
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  padding: 2px 12px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.diagram {
+  font-family: monospace;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 18px;
+  text-shadow: none;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.highlight {
+  color: #f9c74f;
+  text-shadow: 0 0 12px rgba(249,199,79,0.4);
+}
+
+.section-label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+" lang="en-US" data-marpit-pagination="24" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="question-%E2%86%92-answer-section-4">Question → Answer (Section 4)</h2>
+<p><strong>Q:</strong> “How are people enhancing memory and capability in real deployments?”</p>
+<p><strong>A:</strong> We’ll walk through practical patterns:</p>
+<ul>
+<li>Multi-contact and group memory organization</li>
+<li>Distillation from daily logs to long-term memory</li>
+<li>Retrieval patterns that keep context focused</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
+
+section {
+  position: relative;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  padding: 64px 72px 88px 72px;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  bottom: 20px;
+  width: 180px;
+  height: 56px;
+  background: url('data:image/png;base64,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') no-repeat left bottom;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, blockquote, th, td, a, strong, em {
+  color: #ffffff;
+}
+
+section table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #000000 !important;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  outline: none;
+}
+
+section table th:first-child,
+section table td:first-child {
+  width: 28%;
+}
+
+section table th:nth-child(2),
+section table td:nth-child(2) {
+  width: 72%;
+}
+
+section th,
+section td {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  padding: 10px 12px;
+  text-align: left;
+  text-shadow: none;
+}
+
+section th {
+  background: #0b0b0b !important;
+  font-weight: 700;
+}
+
+section pre {
+  background: rgba(0, 0, 0, 0.58);
+  color: #f4f7ff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-shadow: none;
+}
+
+section pre code {
+  background: transparent;
+  color: inherit;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+li { margin-bottom: 8px; }
+
+.title-slide h1 {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+section.center {
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  padding: 2px 12px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.diagram {
+  font-family: monospace;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 18px;
+  text-shadow: none;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.highlight {
+  color: #f9c74f;
+  text-shadow: 0 0 12px rgba(249,199,79,0.4);
+}
+
+.section-label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+" lang="en-US" data-marpit-pagination="25" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="memory-pattern-multi-contact--group-context">Memory Pattern: Multi-Contact + Group Context</h2>
+<p><strong>How agents remember cleanly across people and channels</strong></p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Short-term (session)                 Long-term (structured files)
+─────────────────────                ─────────────────────────────
+Context window                       MEMORY.md
+  └── recent turn state                └── curated durable facts
+
+Per-contact memory                   Per-group memory
+memory/contacts/&lt;id&gt;.md              memory/groups/&lt;id&gt;.md
+  └── preferences, history             └── shared context, norms
+
+Daily logs                           Retrieval layer
+memory/YYYY-MM-DD.md                 memory_search(&quot;topic&quot;)
+  └── raw events                       memory_get(&quot;preference&quot;)
+</code></pre>
+<ul>
+<li>Organize memory by <strong>contact + group</strong>, not one giant file</li>
+<li>Distill daily logs into durable memory during heartbeat passes</li>
+<li>Keep memory readable/editable so behavior stays auditable</li>
+</ul>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
+
+section {
+  position: relative;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  padding: 64px 72px 88px 72px;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  bottom: 20px;
+  width: 180px;
+  height: 56px;
+  background: url('data:image/png;base64,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') no-repeat left bottom;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, blockquote, th, td, a, strong, em {
+  color: #ffffff;
+}
+
+section table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #000000 !important;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  outline: none;
+}
+
+section table th:first-child,
+section table td:first-child {
+  width: 28%;
+}
+
+section table th:nth-child(2),
+section table td:nth-child(2) {
+  width: 72%;
+}
+
+section th,
+section td {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  padding: 10px 12px;
+  text-align: left;
+  text-shadow: none;
+}
+
+section th {
+  background: #0b0b0b !important;
+  font-weight: 700;
+}
+
+section pre {
+  background: rgba(0, 0, 0, 0.58);
+  color: #f4f7ff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-shadow: none;
+}
+
+section pre code {
+  background: transparent;
+  color: inherit;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+li { margin-bottom: 8px; }
+
+.title-slide h1 {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+section.center {
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  padding: 2px 12px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.diagram {
+  font-family: monospace;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 18px;
+  text-shadow: none;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.highlight {
+  color: #f9c74f;
+  text-shadow: 0 0 12px rgba(249,199,79,0.4);
+}
+
+.section-label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+" lang="en-US" data-marpit-pagination="26" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="context-management">Context Management</h2>
+<p><strong>Keeping the agent sharp over long sessions</strong></p>
+<ul>
+<li><strong>Compaction</strong>: summarize older context, preserve key facts</li>
+<li><strong>Session pruning</strong>: drop irrelevant history, keep signal</li>
+<li><strong>Context window budget</strong>: models vary — manage proactively</li>
+</ul>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code>Strategies:
+  ✓ Load only relevant memory files per session type
+  ✓ Use haiku for lightweight tasks (10x cheaper)
+  ✓ Sub-agents for isolated work → don't bloat main context
+  ✓ Heartbeat model: haiku | main chat: sonnet | deep work: opus
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-background-color="#000000" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
+
+section {
+  position: relative;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  padding: 64px 72px 88px 72px;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  bottom: 20px;
+  width: 180px;
+  height: 56px;
+  background: url('data:image/png;base64,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') no-repeat left bottom;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, blockquote, th, td, a, strong, em {
+  color: #ffffff;
+}
+
+section table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #000000 !important;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  outline: none;
+}
+
+section table th:first-child,
+section table td:first-child {
+  width: 28%;
+}
+
+section table th:nth-child(2),
+section table td:nth-child(2) {
+  width: 72%;
+}
+
+section th,
+section td {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  padding: 10px 12px;
+  text-align: left;
+  text-shadow: none;
+}
+
+section th {
+  background: #0b0b0b !important;
+  font-weight: 700;
+}
+
+section pre {
+  background: rgba(0, 0, 0, 0.58);
+  color: #f4f7ff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-shadow: none;
+}
+
+section pre code {
+  background: transparent;
+  color: inherit;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+li { margin-bottom: 8px; }
+
+.title-slide h1 {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+section.center {
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  padding: 2px 12px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.diagram {
+  font-family: monospace;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 18px;
+  text-shadow: none;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.highlight {
+  color: #f9c74f;
+  text-shadow: 0 0 12px rgba(249,199,79,0.4);
+}
+
+.section-label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+" lang="en-US" data-marpit-pagination="27" style="--paginate:true;--background-color:#000000;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
+<h2 id="advanced-patterns">Advanced Patterns</h2>
+<p><strong>The full surface area</strong></p>
+<ul>
+<li><img class="emoji" draggable="false" alt="📡" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4e1.svg" data-marp-twemoji=""/> <strong>Webhooks &amp; hooks</strong> — trigger agents from external events</li>
+<li><img class="emoji" draggable="false" alt="📱" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f4f1.svg" data-marp-twemoji=""/> <strong>Mobile nodes</strong> — iOS/Android paired devices (camera, screen, location)</li>
+<li><img class="emoji" draggable="false" alt="🖼️" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f5bc.svg" data-marp-twemoji=""/> <strong>Canvas surfaces</strong> — agent-rendered UI overlays</li>
+<li><img class="emoji" draggable="false" alt="🌐" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f310.svg" data-marp-twemoji=""/> <strong>Browser automation</strong> — Playwright-powered web control</li>
+<li><img class="emoji" draggable="false" alt="🔁" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f501.svg" data-marp-twemoji=""/> <strong>Agent-to-agent</strong> — agents spawning agents, async pipelines</li>
+</ul>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash"><span class="hljs-comment"># Example: agent triggered by GitHub webhook</span>
+openclaw hook register --event push --agent devbot --channel discord
+</code></pre>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-background-color="#000000" data-class="center" data-theme="default" data-style="@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap');
+
+section {
+  position: relative;
+  font-family: 'Space Grotesk', sans-serif;
+  color: #ffffff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  padding: 64px 72px 88px 72px;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  left: 28px;
+  bottom: 20px;
+  width: 180px;
+  height: 56px;
+  background: url('data:image/png;base64,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') no-repeat left bottom;
+  background-size: contain;
+  opacity: 0.8;
+}
+
+h1, h2, h3, h4, h5, h6, p, li, blockquote, th, td, a, strong, em {
+  color: #ffffff;
+}
+
+section table {
+  display: table !important;
+  width: 100% !important;
+  table-layout: fixed;
+  border-collapse: collapse;
+  background: #000000 !important;
+  border: 1px solid #ffffff;
+  border-radius: 0;
+  overflow: hidden;
+  outline: none;
+}
+
+section table th:first-child,
+section table td:first-child {
+  width: 28%;
+}
+
+section table th:nth-child(2),
+section table td:nth-child(2) {
+  width: 72%;
+}
+
+section th,
+section td {
+  background: #000000 !important;
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+  padding: 10px 12px;
+  text-align: left;
+  text-shadow: none;
+}
+
+section th {
+  background: #0b0b0b !important;
+  font-weight: 700;
+}
+
+section pre {
+  background: rgba(0, 0, 0, 0.58);
+  color: #f4f7ff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  padding: 16px 18px;
+  text-shadow: none;
+}
+
+section pre code {
+  background: transparent;
+  color: inherit;
+}
+
+h1 { font-size: 42px; }
+h2 { font-size: 32px; }
+li { margin-bottom: 8px; }
+
+.title-slide h1 {
+  font-size: 56px;
+  margin-bottom: 12px;
+}
+
+section.center {
+  text-align: center;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  padding: 2px 12px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.diagram {
+  font-family: monospace;
+  background: rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-size: 18px;
+  text-shadow: none;
+  line-height: 1.8;
+  margin-top: 16px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+.highlight {
+  color: #f9c74f;
+  text-shadow: 0 0 12px rgba(249,199,79,0.4);
+}
+
+.section-label {
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 8px;
+}
+" lang="en-US" class="center" data-marpit-pagination="28" style="--paginate:true;--background-color:#000000;--class:center;--theme:default;--style:@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;display=swap')
+;background-color:#000000;background-image:none;" data-marpit-pagination-total="28">
 <h1 id="get-your-claws-ready-%F0%9F%A6%9E">Get Your Claws Ready <img class="emoji" draggable="false" alt="🦞" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@16.0.1/assets/svg/1f99e.svg" data-marp-twemoji=""/></h1>
 <br />
 <table>
@@ -3265,6 +4165,7 @@ section.center {
 </tbody>
 </table>
 <br />
+<p><strong>Builder CTA:</strong> Start with one agent, one skill, and one heartbeat loop.</p>
 <p><em>Questions? Ask the lobster.</em></p>
 </section>
 <script>!function(){"use strict";const t={h1:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"1"},style:"display: block; font-size: 2em; margin-block-start: 0.67em; margin-block-end: 0.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h2:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"2"},style:"display: block; font-size: 1.5em; margin-block-start: 0.83em; margin-block-end: 0.83em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h3:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"3"},style:"display: block; font-size: 1.17em; margin-block-start: 1em; margin-block-end: 1em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h4:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"4"},style:"display: block; margin-block-start: 1.33em; margin-block-end: 1.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h5:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"5"},style:"display: block; font-size: 0.83em; margin-block-start: 1.67em; margin-block-end: 1.67em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},h6:{proto:()=>HTMLHeadingElement,attrs:{role:"heading","aria-level":"6"},style:"display: block; font-size: 0.67em; margin-block-start: 2.33em; margin-block-end: 2.33em; margin-inline-start: 0px; margin-inline-end: 0px; font-weight: bold;"},span:{proto:()=>HTMLSpanElement},pre:{proto:()=>HTMLElement,style:"display: block; font-family: monospace; white-space: pre; margin: 1em 0; --marp-auto-scaling-white-space: pre;"}},e="data-marp-auto-scaling-wrapper",i="data-marp-auto-scaling-svg",n="data-marp-auto-scaling-container";class s extends HTMLElement{container;containerSize;containerObserver;svg;svgComputedStyle;svgPreserveAspectRatio="xMinYMid meet";wrapper;wrapperSize;wrapperObserver;constructor(){super();const t=t=>([e])=>{const{width:i,height:n}=e.contentRect;this[t]={width:i,height:n},this.updateSVGRect()};this.attachShadow({mode:"open"}),this.containerObserver=new ResizeObserver(t("containerSize")),this.wrapperObserver=new ResizeObserver(((...e)=>{t("wrapperSize")(...e),this.flushSvgDisplay()}))}static get observedAttributes(){return["data-downscale-only"]}connectedCallback(){this.shadowRoot.innerHTML=`\n<style>\n  svg[${i}] { display: block; width: 100%; height: auto; vertical-align: top; }\n  span[${n}] { display: table; white-space: var(--marp-auto-scaling-white-space, nowrap); width: max-content; }\n</style>\n<div ${e}>\n  <svg part="svg" ${i}>\n    <foreignObject><span ${n}><slot></slot></span></foreignObject>\n  </svg>\n</div>\n    `.split(/\n\s*/).join(""),this.wrapper=this.shadowRoot.querySelector(`div[${e}]`)??void 0;const t=this.svg;this.svg=this.wrapper?.querySelector(`svg[${i}]`)??void 0,this.svg!==t&&(this.svgComputedStyle=this.svg?window.getComputedStyle(this.svg):void 0),this.container=this.svg?.querySelector(`span[${n}]`)??void 0,this.observe()}disconnectedCallback(){this.svg=void 0,this.svgComputedStyle=void 0,this.wrapper=void 0,this.container=void 0,this.observe()}attributeChangedCallback(){this.observe()}flushSvgDisplay(){const{svg:t}=this;t&&(t.style.display="inline",requestAnimationFrame((()=>{t.style.display=""})))}observe(){this.containerObserver.disconnect(),this.wrapperObserver.disconnect(),this.wrapper&&this.wrapperObserver.observe(this.wrapper),this.container&&this.containerObserver.observe(this.container),this.svgComputedStyle&&this.observeSVGStyle(this.svgComputedStyle)}observeSVGStyle(t){const e=()=>{const i=(()=>{const e=t.getPropertyValue("--preserve-aspect-ratio");if(e)return e.trim();return`x${(({textAlign:t,direction:e})=>{if(t.endsWith("left"))return"Min";if(t.endsWith("right"))return"Max";if("start"===t||"end"===t){let i="rtl"===e;return"end"===t&&(i=!i),i?"Max":"Min"}return"Mid"})(t)}YMid meet`})();i!==this.svgPreserveAspectRatio&&(this.svgPreserveAspectRatio=i,this.updateSVGRect()),t===this.svgComputedStyle&&requestAnimationFrame(e)};e()}updateSVGRect(){let t=Math.ceil(this.containerSize?.width??0);const e=Math.ceil(this.containerSize?.height??0);void 0!==this.dataset.downscaleOnly&&(t=Math.max(t,this.wrapperSize?.width??0));const i=this.svg?.querySelector(":scope > foreignObject");if(i?.setAttribute("width",`${t}`),i?.setAttribute("height",`${e}`),this.svg&&(this.svg.setAttribute("viewBox",`0 0 ${t} ${e}`),this.svg.setAttribute("preserveAspectRatio",this.svgPreserveAspectRatio),this.svg.style.height=t<=0||e<=0?"0":""),this.container){const t=this.svgPreserveAspectRatio.toLowerCase();this.container.style.marginLeft=t.startsWith("xmid")||t.startsWith("xmax")?"auto":"0",this.container.style.marginRight=t.startsWith("xmi")?"auto":"0"}}}const r=(t,{attrs:e={},style:i})=>class extends t{constructor(...t){super(...t);for(const[t,i]of Object.entries(e))this.hasAttribute(t)||this.setAttribute(t,i);this._shadow()}static get observedAttributes(){return["data-auto-scaling"]}connectedCallback(){this._update()}attributeChangedCallback(){this._update()}_shadow(){if(!this.shadowRoot)try{this.attachShadow({mode:"open"})}catch(t){if(!(t instanceof Error&&"NotSupportedError"===t.name))throw t}return this.shadowRoot}_update(){const t=this._shadow();if(t){const e=i?`<style>:host { ${i} }</style>`:"";let n="<slot></slot>";const{autoScaling:s}=this.dataset;if(void 0!==s){n=`<marp-auto-scaling exportparts="svg:auto-scaling" ${"downscale-only"===s?"data-downscale-only":""}>${n}</marp-auto-scaling>`}t.innerHTML=e+n}}};let o;const a=Symbol();let l;const c="marpitSVGPolyfill:setZoomFactor,",d=Symbol(),h=Symbol();const g=()=>{const t="Apple Computer, Inc."===navigator.vendor,e=t?[u]:[],i={then:e=>(t?(async()=>{if(void 0===l){const t=document.createElement("canvas");t.width=10,t.height=10;const e=t.getContext("2d"),i=new Image(10,10),n=new Promise((t=>{i.addEventListener("load",(()=>t()))}));i.crossOrigin="anonymous",i.src="data:image/svg+xml;charset=utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2210%22%20height%3D%2210%22%20viewBox%3D%220%200%201%201%22%3E%3CforeignObject%20width%3D%221%22%20height%3D%221%22%20requiredExtensions%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%3E%3Cdiv%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxhtml%22%20style%3D%22width%3A%201px%3B%20height%3A%201px%3B%20background%3A%20red%3B%20position%3A%20relative%22%3E%3C%2Fdiv%3E%3C%2FforeignObject%3E%3C%2Fsvg%3E",await n,e.drawImage(i,0,0),l=e.getImageData(5,5,1,1).data[3]<128}return l})().then((t=>{null==e||e(t?[u]:[])})):null==e||e([]),i)};return Object.assign(e,i)};let p,m;function u(t){const e="object"==typeof t&&t.target||document,i="object"==typeof t?t.zoom:t;window[h]||(Object.defineProperty(window,h,{configurable:!0,value:!0}),document.body.style.zoom=1.0001,document.body.offsetHeight,document.body.style.zoom=1,window.addEventListener("message",(({data:t,origin:e})=>{if(e===window.origin)try{if(t&&"string"==typeof t&&t.startsWith(c)){const[,e]=t.split(","),i=Number.parseFloat(e);Number.isNaN(i)||(m=i)}}catch(t){console.error(t)}})));let n=!1;Array.from(e.querySelectorAll("svg[data-marpit-svg]"),(t=>{var e,s,r,o;t.style.transform||(t.style.transform="translateZ(0)");const a=i||m||t.currentScale||1;p!==a&&(p=a,n=a);const l=t.getBoundingClientRect(),{length:c}=t.children;for(let i=0;i<c;i+=1){const n=t.children[i];if(n.getScreenCTM){const t=n.getScreenCTM();if(t){const i=null!==(s=null===(e=n.x)||void 0===e?void 0:e.baseVal.value)&&void 0!==s?s:0,c=null!==(o=null===(r=n.y)||void 0===r?void 0:r.baseVal.value)&&void 0!==o?o:0,d=n.children.length;for(let e=0;e<d;e+=1){const s=n.children[e];if("SECTION"===s.tagName){const{style:e}=s;e.transformOrigin||(e.transformOrigin=`${-i}px ${-c}px`),e.transform=`scale(${a}) matrix(${t.a}, ${t.b}, ${t.c}, ${t.d}, ${t.e-l.left}, ${t.f-l.top}) translateZ(0.0001px)`;break}}}}}})),!1!==n&&Array.from(e.querySelectorAll("iframe"),(({contentWindow:t})=>{null==t||t.postMessage(`${c}${n}`,"null"===window.origin?"*":window.origin)}))}function v({once:t=!1,target:e=document}={}){const i=function(t=document){if(t[d])return t[d];let e=!0;const i=()=>{e=!1,delete t[d]};Object.defineProperty(t,d,{configurable:!0,value:i});let n=[],s=!1;(async()=>{try{n=await g()}finally{s=!0}})();const r=()=>{for(const e of n)e({target:t});s&&0===n.length||e&&window.requestAnimationFrame(r)};return r(),i}(e);return t?(i(),()=>{}):i}p=1,m=void 0;const w=Symbol(),b=(e=document)=>{if("undefined"==typeof window)throw new Error("Marp Core's browser script is valid only in browser context.");if(((e=document)=>{const i=window[a];i||customElements.define("marp-auto-scaling",s);for(const n of Object.keys(t)){const s=`marp-${n}`,a=t[n].proto();(o??(o=!!document.createElement("div",{is:"marp-auto-scaling"}).outerHTML.startsWith("<div is"),o))&&a!==HTMLElement?i||customElements.define(s,r(a,{style:t[n].style}),{extends:n}):(i||customElements.define(s,r(HTMLElement,t[n])),e.querySelectorAll(`${n}[is="${s}"]`).forEach((t=>{t.outerHTML=t.outerHTML.replace(new RegExp(`^<${n}`,"i"),`<${s}`).replace(new RegExp(`</${n}>$`,"i"),`</${s}>`)})))}window[a]=!0})(e),e[w])return e[w];const i=v({target:e}),n=()=>{i(),delete e[w]},l=Object.assign(n,{cleanup:n,update:()=>b(e)});return Object.defineProperty(e,w,{configurable:!0,value:l}),l},y=document.currentScript;b(y?y.getRootNode():document)}();
