@@ -165,9 +165,9 @@ By Sam Holmes
 
 <!--
 Speaker notes (main points):
-- Quick intro: this talk is a practical architecture walkthrough.
-- Set expectation: visual slides, deeper details in narration.
-- Invite audience to hold questions for section breaks.
+- I quick intro: this talk is a practical architecture walkthrough.
+- I set expectation: visual slides, deeper details in narration.
+- I invite audience to hold questions for section breaks.
 -->
 
 ---
@@ -186,9 +186,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Briefly preview the five sections and pacing.
-- Tell audience we will go map first, then implementation details.
-- Ask them to listen for one pattern they can reuse immediately.
+- I briefly preview the five sections and pacing.
+- I tell audience we will go map first, then implementation details.
+- I ask them to listen for one pattern they can reuse immediately.
 -->
 
 ---
@@ -206,9 +206,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Confirm this content came from audience interest areas.
-- Emphasize relevance: we are solving the questions they actually asked.
-- Transition into scope slide.
+- I confirm this content came from audience interest areas.
+- I emphasize relevance: we are solving the questions they actually asked.
+- I transition into scope slide.
 -->
 
 ---
@@ -227,9 +227,9 @@ Quick setup content is intentionally skipped.
 
 <!--
 Speaker notes (main points):
-- Clarify what is out of scope: beginner install/setup steps.
-- Clarify what is in scope: architecture and repeatable build patterns.
-- Transition into section 1 overview.
+- I clarify what is out of scope: beginner install/setup steps.
+- I clarify what is in scope: architecture and repeatable build patterns.
+- I transition into section 1 overview.
 -->
 
 ---
@@ -244,23 +244,22 @@ Speaker notes (main points):
 <div class="section-label">Section 1 of 5</div>
 
 <!--
-Q: Can you give me the whole system first, then go deeper?
-A: Yes — first the map, then the path:
-- System architecture at 10,000 ft
-- One message lifecycle, step-by-step
-- Then we zoom into each plane
+Speaker notes (main points):
+- I start with the full system map before details.
+- I explain the message lifecycle once, end-to-end.
+- I tell the audience we will zoom into each plane next.
 -->
 
 ---
 <!-- _header: "🗺️ Architectural Overview" -->
 
-![width:1500px](2026-02-28-22-02-architecture-diagram-black-bg.png)
+![height:414px](2026-02-28-22-02-architecture-diagram-black-bg.png)
 
 <!--
 Speaker notes (main points):
-- Walk left to right: channels → gateway → runtime.
-- Keep this high-level; details come in next slides.
-- Emphasize “single gateway as source of truth.”
+- I walk left to right: channels → gateway → runtime.
+- I keep this high-level; details come in next slides.
+- I emphasize “single gateway as source of truth.”
 -->
 
 ---
@@ -268,25 +267,21 @@ Speaker notes (main points):
 
 ## One Message Lifecycle (end-to-end)
 
-1. Message arrives from channel
-2. Gateway applies binding/routing rules
-3. Session key is resolved (or created)
-4. Agent loop runs (model + tools)
-5. Tool outputs + assistant reply are persisted
-6. Final response is delivered to channel
-
-> _This is the spine of everything else in the talk._
+![height:456px](2026-03-01-06-50-message-lifecycle-flowchart-themed.svg)
 
 <!--
 Speaker notes (main points):
-- Say this lifecycle is the core mental model for every feature.
-- Keep examples short: inbound message, run, tools, persistence, outbound reply.
-- Reference this flow again in later sections.
+- I say this lifecycle is the core mental model for every feature.
+- I walk top-to-bottom through the six steps.
+- I reference this flow again in later sections.
 -->
 ---
 <!-- _header: "🗺️ Architectural Overview" -->
 
 ## The Gateway
+
+<div style="display:flex; gap:28px; align-items:flex-start;">
+  <div style="flex:1; min-width:0;">
 
 **WebSocket control plane + session authority**
 
@@ -294,12 +289,20 @@ Speaker notes (main points):
 - Resolves routing + session
 - Dispatches runs + returns replies
 
+  </div>
+  <div style="width:42%;">
+
+![width:100%](gateway-brain-lobster.jpg)
+
+  </div>
+</div>
+
 <!--
 Speaker notes (main points):
-- Gateway is the always-on brain/router; everything passes through it.
-- Deterministic routing is key: same input rules produce predictable agent selection.
-- Session ownership in gateway is why history consistency holds.
-- Mention that cron/heartbeat are just additional ingress paths, not separate systems.
+- I explain that the gateway is the always-on brain/router; everything passes through it.
+- I explain that deterministic routing is key: the same input rules produce predictable agent selection.
+- I explain that session ownership in the gateway is why history consistency holds.
+- I mention that cron/heartbeat are just additional ingress paths, not separate systems.
 -->
 ---
 <!-- _header: "🗺️ Architectural Overview" -->
@@ -323,9 +326,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Explain that behavior changes come from file edits, not redeploys.
-- Mention bootstrap files are injected into context on new sessions.
-- Stress auditability: markdown files are transparent and versionable.
+- I explain that behavior changes come from file edits, not redeploys.
+- I mention bootstrap files are injected into context on new sessions.
+- I stress auditability: markdown files are transparent and versionable.
 -->
 ---
 <!-- _header: "" -->
@@ -339,11 +342,10 @@ Speaker notes (main points):
 <div class="section-label">Section 2 of 5</div>
 
 <!--
-Q: How does the gateway decide where messages go?
-A: Control plane = deterministic routing:
-- Multi-agent routing model
-- Binding precedence rules
-- Predictable, inspectable delivery paths
+Speaker notes (main points):
+- I explain that control plane routing is deterministic.
+- I call out binding precedence as the decision rule.
+- I emphasize predictable, inspectable delivery paths.
 -->
 ---
 <!-- _header: "🧭 Control Plane (Gateway)" -->
@@ -358,9 +360,9 @@ One gateway → **many isolated brains**
 
 <!--
 Speaker notes (main points):
-- Isolation is the unlock: separate memory/auth/state avoids cross-contamination.
-- Routing dimensions: channel/account/peer/guild.
-- Great phrase to use: “one nervous system, many personalities.”
+- I explain that isolation is the unlock: separate memory/auth/state avoids cross-contamination.
+- I call out routing dimensions: channel, account, peer, and guild.
+- I use this phrase: “one nervous system, many personalities.”
 -->
 ---
 <!-- _header: "🧭 Control Plane (Gateway)" -->
@@ -373,9 +375,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Routing is deterministic and precedence-based.
-- Walk top-to-bottom: peer → guild/team → account → channel default.
-- Emphasize auditability: same input context routes the same way.
+- I routing is deterministic and precedence-based.
+- I walk top-to-bottom: peer → guild/team → account → channel default.
+- I emphasize auditability: same input context routes the same way.
 -->
 
 ---
@@ -390,11 +392,10 @@ Speaker notes (main points):
 <div class="section-label">Section 3 of 5</div>
 
 <!--
-Q: How does execution happen after routing?
-A: Runtime handles the work:
-- Agent loop and tool execution
-- Sub-agent spawning for parallel tasks
-- Cron/heartbeat for proactive runs
+Speaker notes (main points):
+- I after routing, runtime executes the actual work.
+- I cover the agent loop and tool execution path.
+- I connect sub-agents and cron/heartbeat to proactive execution.
 -->
 ---
 <!-- _header: "⚙️ Execution Plane (Runtime)" -->
@@ -417,9 +418,9 @@ Main run
 
 <!--
 Speaker notes (main points):
-- Explain why this is safer than one giant context: fewer collisions, lower token bloat.
-- Mention non-blocking behavior and orchestration pattern (spawn → continue → collect).
-- Good practical line: “use subagents when tasks are parallelizable and independent.”
+- I explain why this is safer than one giant context: fewer collisions, lower token bloat.
+- I mention non-blocking behavior and orchestration pattern (spawn → continue → collect).
+- I use this practical line: “use subagents when tasks are parallelizable and independent.”
 -->
 ---
 <!-- _header: "⚙️ Execution Plane (Runtime)" -->
@@ -434,9 +435,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Distinguish by precision: heartbeat for batched checks, cron for exact timing.
-- Emphasize they are orchestration inputs, not separate assistant logic.
-- Give one concrete example each (heartbeat: inbox+calendar; cron: Monday standup).
+- I distinguish by precision: heartbeat for batched checks, cron for exact timing.
+- I emphasize they are orchestration inputs, not separate assistant logic.
+- I give one concrete example each (heartbeat: inbox+calendar; cron: Monday standup).
 -->
 ---
 <!-- _header: "" -->
@@ -450,11 +451,10 @@ Speaker notes (main points):
 <div class="section-label">Section 4 of 5</div>
 
 <!--
-Q: How do I extend this and ship my own agent?
-A: We’ll use a reusable builder pattern:
-- Skills/plugins and tool surface
-- Agent workspace contract
-- Copyable independent-agent blueprint
+Speaker notes (main points):
+- I frame this section as “how to ship your own agent.”
+- I highlight skills/plugins plus tool surface as the extension path.
+- I use the workspace contract + blueprint as the practical recipe.
 -->
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
@@ -475,9 +475,9 @@ skills/
 
 <!--
 Speaker notes (main points):
-- Skills are the fastest path to repeatable capability.
-- Stress “progressive disclosure”: only load detailed instructions when needed.
-- Explain why this keeps base prompt lean and easier to maintain.
+- I explain that skills are the fastest path to repeatable capability.
+- I stress “progressive disclosure”: only load detailed instructions when needed.
+- I explain why this keeps base prompt lean and easier to maintain.
 -->
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
@@ -499,9 +499,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Call out that IDENTITY.md is part of the core contract.
-- Explain each file has a distinct job (rules, persona, user, tools, memory).
-- Reinforce fast iteration: edit files, rerun, observe behavior.
+- I call out that IDENTITY.md is part of the core contract.
+- I explain each file has a distinct job (rules, persona, user, tools, memory).
+- I reinforce fast iteration: edit files, rerun, observe behavior.
 -->
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
@@ -522,9 +522,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Position this as a checklist teams can copy.
-- Suggest starting minimal: one model, one skill, one routing path.
-- Mention boundaries early to avoid unsafe defaults.
+- I position this as a checklist teams can copy.
+- I suggest starting minimal: one model, one skill, one routing path.
+- I mention boundaries early to avoid unsafe defaults.
 -->
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
@@ -539,9 +539,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Tool availability is policy-gated, not prompt-gated.
-- Mention layered controls: profile + allow/deny + sandbox/elevated rules.
-- Frame tools as the "hands" of the agent runtime.
+- I explain that tool availability is policy-gated, not prompt-gated.
+- I mention layered controls: profile + allow/deny + sandbox/elevated rules.
+- I frame tools as the "hands" of the agent runtime.
 -->
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
@@ -565,9 +565,9 @@ Each has:
 
 <!--
 Speaker notes (main points):
-- Explain this is how one gateway supports multiple assistant personas.
-- Mention isolation benefits: cleaner context and safer operations.
-- Give one practical example (personal vs devbot routing).
+- I explain this is how one gateway supports multiple assistant personas.
+- I mention isolation benefits: cleaner context and safer operations.
+- I give one practical example (personal vs devbot routing).
 -->
 ---
 <!-- _header: "" -->
@@ -581,18 +581,11 @@ Speaker notes (main points):
 <div class="section-label">Section 5 of 5</div>
 
 <!--
-Q: Where does state live, and how is context kept useful over time?
-A: State plane covers:
-- Session model + pruning/compaction behavior
-- Multi-contact and group memory organization
-- Retrieval patterns that keep context focused
--->
-
-<!--
 Speaker notes (main points):
-- Introduce state as the long-term quality layer.
-- Explain this section connects reliability, memory, and cost control.
-- Transition from architecture to operational discipline.
+- I introduce state as the long-term quality layer.
+- I cover session model plus pruning/compaction behavior.
+- I explain multi-contact/group memory and focused retrieval patterns.
+- I connect this section to reliability, memory quality, and cost control.
 -->
 ---
 <!-- _header: "💾 State Plane (Sessions + Memory)" -->
@@ -613,9 +606,9 @@ memory/YYYY-MM-DD.md
 
 <!--
 Speaker notes (main points):
-- Explain source-of-truth = markdown files; model memory follows what’s written.
-- Contrast short-term context vs durable memory files.
-- Mention retrieval path: memory_search / memory_get.
+- I explain source-of-truth = markdown files; model memory follows what’s written.
+- I contrast short-term context vs durable memory files.
+- I mention retrieval path: memory_search / memory_get.
 -->
 ---
 <!-- _header: "💾 State Plane (Sessions + Memory)" -->
@@ -630,9 +623,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Context = current model window; memory = durable files on disk.
-- Tool schemas count toward context even when not shown as plain text.
-- `/compact` preserves continuity while reducing window pressure.
+- I context = current model window; memory = durable files on disk.
+- I tool schemas count toward context even when not shown as plain text.
+- I `/compact` preserves continuity while reducing window pressure.
 -->
 ---
 <!-- _header: "💾 State Plane (Sessions + Memory)" -->
@@ -647,9 +640,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Pruning affects prompt window, not durable transcript storage.
-- Compaction is controlled summarization to preserve key continuity.
-- Tie this to cost + quality: less noise, better reasoning.
+- I pruning affects prompt window, not durable transcript storage.
+- I compaction is controlled summarization to preserve key continuity.
+- I tie this to cost + quality: less noise, better reasoning.
 -->
 ---
 <!-- _header: "💾 State Plane (Sessions + Memory)" -->
@@ -665,9 +658,9 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- Present this as building blocks, not a checklist to use all at once.
-- Recommend starting with one trigger + one action + one notification path.
-- Mention policy/sandbox boundaries before enabling high-impact tools.
+- I present this as building blocks, not a checklist to use all at once.
+- I recommend starting with one trigger + one action + one notification path.
+- I mention policy/sandbox boundaries before enabling high-impact tools.
 -->
 ---
 
@@ -691,7 +684,7 @@ _Questions? Ask the lobster._
 
 <!--
 Speaker notes (main points):
-- Recap: gateway, routing, runtime, state, extensibility.
-- Encourage audience to ship one small working workflow first.
-- Point them to docs + GitHub as next action.
+- I recap: gateway, routing, runtime, state, extensibility.
+- I encourage audience to ship one small working workflow first.
+- I point them to docs + GitHub as next action.
 -->
