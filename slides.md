@@ -11,7 +11,7 @@ style: |
     font-family: 'Space Grotesk', sans-serif;
     color: #ffffff;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
-    padding: 64px 72px 88px 72px;
+    padding: 84px 72px 88px 72px;
   }
 
   section::before {
@@ -136,6 +136,19 @@ style: |
     opacity: 0.6;
     margin-bottom: 8px;
   }
+
+  section header {
+    position: absolute;
+    top: 12px;
+    left: 28px;
+    right: auto;
+    font-size: 22px;
+    letter-spacing: 0.4px;
+    text-transform: none;
+    color: rgba(255, 255, 255, 0.82);
+    text-shadow: none;
+    font-weight: 700;
+  }
 ---
 
 <!-- _class: center -->
@@ -148,10 +161,11 @@ By Sam Holmes
 
 ## Agenda
 
-1. 🔧 **Under the Hood** — Architecture, gateway, agent runtime
-2. 🧠 **Orchestration & Agentic Patterns** — Multi-agent, sub-agents, cron
-3. 🛠️ **Building & Extending** — Skills, workspaces, tools
-4. 💾 **Memory & Advanced Patterns** — Memory systems, hooks, nodes
+1. 🗺️ **Architectural Overview** — system map + message lifecycle
+2. 🧭 **Control Plane (Gateway)** — routing, bindings, protocol
+3. ⚙️ **Execution Plane (Runtime)** — agent loop, tools, orchestration
+4. 🧩 **Extensibility + Action** — skills/plugins + builder blueprint
+5. 💾 **State Plane (Sessions + Memory)** — persistence, pruning, recall
 
 <br>
 
@@ -172,44 +186,39 @@ By Sam Holmes
 
 ---
 
+## Scope for this session
+
+Quick setup content is intentionally skipped.
+
+- ✅ You already know OpenClaw basics
+- ✅ You want architecture and implementation patterns
+- ✅ We’ll optimize for the post-break builder audience
+
+<br>
+
+**Goal:** leave with a clear mental model you can build from.
+
+---
+<!-- _header: "" -->
+
 <!-- _footer: "" -->
 
-# 🔧 Under the Hood
+# 🗺️ Architectural Overview
 
 <br>
 
-<div class="section-label">Section 1 of 4</div>
+<div class="section-label">Section 1 of 5</div>
+
+<!--
+Q: Can you give me the whole system first, then go deeper?
+A: Yes — first the map, then the path:
+- System architecture at 10,000 ft
+- One message lifecycle, step-by-step
+- Then we zoom into each plane
+-->
 
 ---
-
-## Question → Answer (Section 1)
-
-**Q:** “How does it actually work under the hood?”
-
-**A:** We’ll map the core path end-to-end:
-- Gateway and channel routing
-- Session/runtime boundaries
-- Workspace contract and tool execution model
-
----
-
-## Assumptions for this talk
-
-You already know OpenClaw basics. So we’ll skip setup and focus on internals.
-
-- ✅ You’ve installed and run it before
-- ✅ You understand channels + agent replies
-- ✅ You want deeper architecture and patterns
-- ✅ Post-break audience is self-selected builders, so we’ll go practical and deep
-
-<br>
-
-**Today’s focus:**
-1. How routing + runtime actually work
-2. How to orchestrate sub-agents safely
-3. How to extend with skills and memory patterns
-
----
+<!-- _header: "🗺️ Architectural Overview" -->
 
 ## Architecture
 
@@ -230,6 +239,20 @@ You already know OpenClaw basics. So we’ll skip setup and focus on internals.
 One gateway. Many channels. One agent brain.
 
 ---
+<!-- _header: "🗺️ Architectural Overview" -->
+
+## One Message Lifecycle (end-to-end)
+
+1. Message arrives from channel
+2. Gateway applies binding/routing rules
+3. Session key is resolved (or created)
+4. Agent loop runs (model + tools)
+5. Tool outputs + assistant reply are persisted
+6. Final response is delivered to channel
+
+> _This is the spine of everything else in the talk._
+---
+<!-- _header: "🗺️ Architectural Overview" -->
 
 ## The Gateway
 
@@ -248,8 +271,8 @@ One gateway. Many channels. One agent brain.
   }
 }
 ```
-
 ---
+<!-- _header: "🗺️ Architectural Overview" -->
 
 ## Agent Runtime
 
@@ -267,29 +290,26 @@ One gateway. Many channels. One agent brain.
 ```
 
 > _Files are the interface. Readable, editable, version-controlled._
-
 ---
+<!-- _header: "" -->
 
 <!-- _footer: "" -->
 
-# 🧠 Orchestration & Agentic Patterns
+# 🧭 Control Plane (Gateway)
 
 <br>
 
-<div class="section-label">Section 2 of 4</div>
+<div class="section-label">Section 2 of 5</div>
 
+<!--
+Q: How does the gateway decide where messages go?
+A: Control plane = deterministic routing:
+- Multi-agent routing model
+- Binding precedence rules
+- Predictable, inspectable delivery paths
+-->
 ---
-
-## Question → Answer (Section 2)
-
-**Q:** “How does sub-agent orchestration work in practice?”
-
-**A:** We’ll cover the concrete mechanics:
-- Deterministic routing + bindings
-- `sessions_spawn` isolation model
-- Parallel execution with safe result return
-
----
+<!-- _header: "🧭 Control Plane (Gateway)" -->
 
 ## Multi-Agent Routing
 
@@ -308,8 +328,8 @@ One gateway → **many agents**, each isolated
   }
 }
 ```
-
 ---
+<!-- _header: "🧭 Control Plane (Gateway)" -->
 
 ## Bindings: Deterministic Routing
 
@@ -334,6 +354,25 @@ Incoming message
 Predictable. Inspectable. No magic.
 
 ---
+<!-- _header: "" -->
+
+<!-- _footer: "" -->
+
+# ⚙️ Execution Plane (Runtime)
+
+<br>
+
+<div class="section-label">Section 3 of 5</div>
+
+<!--
+Q: How does execution happen after routing?
+A: Runtime handles the work:
+- Agent loop and tool execution
+- Sub-agent spawning for parallel tasks
+- Cron/heartbeat for proactive runs
+-->
+---
+<!-- _header: "⚙️ Execution Plane (Runtime)" -->
 
 ## Sub-Agent Spawning
 
@@ -352,8 +391,8 @@ Main agent
 - `sessions_spawn` creates isolated child session
 - Sub-agents get their own context window
 - Results push back automatically — no polling
-
 ---
+<!-- _header: "⚙️ Execution Plane (Runtime)" -->
 
 ## Cron & Heartbeats
 
@@ -371,29 +410,26 @@ Main agent
   ]
 }
 ```
-
 ---
+<!-- _header: "" -->
 
 <!-- _footer: "" -->
 
-# 🛠️ Building & Extending
+# 🧩 Extensibility + Action
 
 <br>
 
-<div class="section-label">Section 3 of 4</div>
+<div class="section-label">Section 4 of 5</div>
 
+<!--
+Q: How do I extend this and ship my own agent?
+A: We’ll use a reusable builder pattern:
+- Skills/plugins and tool surface
+- Agent workspace contract
+- Copyable independent-agent blueprint
+-->
 ---
-
-## Question → Answer (Section 3)
-
-**Q:** “How do I build independent agents I can replicate?”
-
-**A:** We’ll break it down into a reusable blueprint:
-- Workspace contract
-- Bindings + model profile
-- Skills + safety boundaries
-
----
+<!-- _header: "🧩 Extensibility + Action" -->
 
 ## Skills
 
@@ -412,8 +448,8 @@ Main agent
 - Agent reads `SKILL.md` and knows how to use it
 
 > _Skills = tools + docs bundled together_
-
 ---
+<!-- _header: "🧩 Extensibility + Action" -->
 
 ## Agent Workspace Contract
 
@@ -428,8 +464,8 @@ Main agent
 | `MEMORY.md` | Long-term curated memory |
 
 > _Change the files → change the agent. No redeployment needed._
-
 ---
+<!-- _header: "🧩 Extensibility + Action" -->
 
 ## Independent Agent Blueprint (copy this)
 
@@ -444,8 +480,8 @@ Main agent
 | Ops loop | Heartbeat checklist + cron for proactive tasks |
 
 > _If you can define these seven, you can replicate agents reliably._
-
 ---
+<!-- _header: "🧩 Extensibility + Action" -->
 
 ## The Tool System
 
@@ -463,8 +499,8 @@ Built-in tools
 
 + Skill tools (custom scripts via SKILL.md)
 ```
-
 ---
+<!-- _header: "🧩 Extensibility + Action" -->
 
 ## Multi-Agent Setup in Practice
 
@@ -482,62 +518,56 @@ Each has:
   • own channel bindings
   • own skill set
 ```
-
 ---
+<!-- _header: "" -->
 
 <!-- _footer: "" -->
 
-# 💾 Memory & Advanced Patterns
+# 💾 State Plane (Sessions + Memory)
 
 <br>
 
-<div class="section-label">Section 4 of 4</div>
+<div class="section-label">Section 5 of 5</div>
 
----
-
-## Question → Answer (Section 4)
-
-**Q:** “How are people enhancing memory and capability in real deployments?”
-
-**A:** We’ll walk through practical patterns:
+<!--
+Q: Where does state live, and how is context kept useful over time?
+A: State plane covers:
+- Session model + pruning/compaction behavior
 - Multi-contact and group memory organization
-- Distillation from daily logs to long-term memory
 - Retrieval patterns that keep context focused
-
+-->
 ---
+<!-- _header: "💾 State Plane (Sessions + Memory)" -->
 
 ## Memory Pattern: Multi-Contact + Group Context
 
 **How agents remember cleanly across people and channels**
 
 ```
-Short-term (session)                 Long-term (structured files)
-─────────────────────                ─────────────────────────────
-Context window                       MEMORY.md
-  └── recent turn state                └── curated durable facts
+Long-term memory layers
+───────────────────────
+MEMORY.md                     → curated durable facts
+memory/contacts/<id>.md       → person-specific preferences/history
+memory/groups/<id>.md         → shared context + norms
+memory/YYYY-MM-DD.md          → daily raw events
 
-Per-contact memory                   Per-group memory
-memory/contacts/<id>.md              memory/groups/<id>.md
-  └── preferences, history             └── shared context, norms
-
-Daily logs                           Retrieval layer
-memory/YYYY-MM-DD.md                 memory_search("topic")
-  └── raw events                       memory_get("preference")
+Retrieval tools
+memory_search("topic")
+memory_get("path")
 ```
 
 - Organize memory by **contact + group**, not one giant file
 - Distill daily logs into durable memory during heartbeat passes
-- Keep memory readable/editable so behavior stays auditable
-
 ---
+<!-- _header: "💾 State Plane (Sessions + Memory)" -->
 
-## Context Management
+## Session Pruning + Context Management
 
-**Keeping the agent sharp over long sessions**
+**Keeping long-running sessions accurate and affordable**
 
-- **Compaction**: summarize older context, preserve key facts
-- **Session pruning**: drop irrelevant history, keep signal
-- **Context window budget**: models vary — manage proactively
+- **Session pruning**: trim low-value tool-heavy history before model calls
+- **Compaction**: summarize older context while preserving key facts
+- **Context window budgeting**: choose models + reserves intentionally
 
 ```
 Strategies:
@@ -546,8 +576,8 @@ Strategies:
   ✓ Sub-agents for isolated work → don't bloat main context
   ✓ Heartbeat model: haiku | main chat: sonnet | deep work: opus
 ```
-
 ---
+<!-- _header: "💾 State Plane (Sessions + Memory)" -->
 
 ## Advanced Patterns
 
@@ -563,7 +593,6 @@ Strategies:
 # Example: agent triggered by GitHub webhook
 openclaw hook register --event push --agent devbot --channel discord
 ```
-
 ---
 
 <!-- _class: center -->
