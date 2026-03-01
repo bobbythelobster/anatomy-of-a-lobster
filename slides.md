@@ -286,7 +286,7 @@ Speaker notes (main points):
 
 ![bg right:40% 90%](spine.png)
 
-**WebSocket control plane + session authority**
+**The spine (central nervous system)**
 
 - Ingests channels
 - Resolves routing + session
