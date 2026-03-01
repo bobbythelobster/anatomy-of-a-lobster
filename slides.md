@@ -568,14 +568,15 @@ Speaker notes (main points):
 <!-- _header: "🧩 Extensibility + Action" -->
 
 <style scoped>
-table, tr, td, th { border:none !important; background:transparent !important; }
+section > div.cols { display:flex; gap:24px; align-items:center; }
+section > div.cols > .left { flex:1 1 0; min-width:0; }
+section > div.cols > .right { flex:0 0 40%; }
 </style>
 
 ## Skills
 
-<table style="width:100%; table-layout:fixed;">
-<tr>
-<td style="vertical-align:top; width:58%; padding-right:24px;">
+<div class="cols">
+<div class="left">
 <p><strong>Packaged capability units</strong></p>
 <pre><code>skills/
   weather/
@@ -586,12 +587,11 @@ table, tr, td, th { border:none !important; background:transparent !important; }
 <li>Agent loads on demand</li>
 </ul>
 <p>Reference: https://agentskills.io</p>
-</td>
-<td style="vertical-align:middle; width:42%;">
+</div>
+<div class="right">
 <video src="skills-demo.mp4" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
-</td>
-</tr>
-</table>
+</div>
+</div>
 
 <!--
 Speaker notes (main points):
