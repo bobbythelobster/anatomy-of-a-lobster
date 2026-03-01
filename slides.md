@@ -401,6 +401,39 @@ Speaker notes (main points):
 -->
 
 ---
+<!-- _header: "🧭 Control Plane (Gateway)" -->
+
+## Session Keys: continuity and isolation
+
+- Agent-scoped key: `agent:<agentId>:...`
+- Routing picks agent first, key second
+- Keys define continuity + queue isolation
+
+```json
+{ "session": { "dmScope": "main" } }
+```
+
+`dmScope` options:
+- `main` (single shared DM thread)
+- `per-peer`
+- `per-channel-peer`
+- `per-account-channel-peer` (strongest isolation)
+
+<!--
+Speaker notes (main points):
+- I explain the two-step model: first route to an agent, then derive the session key.
+- I explain why this matters: the session key is the continuity boundary for history and state.
+- I mention that queue lanes are effectively anchored to session identity, so key shape impacts concurrency behavior.
+- I explain dmScope in plain language:
+  - I use `main` when I want all direct messages collapsed into one thread.
+  - I use `per-peer` when each person should get their own continuity.
+  - I use `per-channel-peer` when I want separation by provider/channel plus person.
+  - I use `per-account-channel-peer` when I run multiple accounts and want strongest isolation.
+- I note the practical default for multi-account ops: `per-account-channel-peer` to avoid cross-account bleed.
+- I connect this back to troubleshooting: if continuity feels wrong, dmScope and key derivation are the first places I check.
+-->
+
+---
 <!-- _header: "" -->
 
 <!-- _footer: "" -->
