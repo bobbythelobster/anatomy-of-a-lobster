@@ -328,6 +328,27 @@ Speaker notes (main points):
 - I stress auditability: markdown files are transparent and versionable.
 -->
 ---
+<!-- _header: "🗺️ Architectural Overview" -->
+
+## Agent Tools & Skills
+
+### 🦞 The Claws of the Lobster
+
+- **Tools are the action layer**: file ops, exec, browser, messaging, cron, nodes, canvas
+- **Skills are capability packs**: `SKILL.md` + scripts + usage patterns
+- **Policy controls the claws**: allow/deny rules, sandboxing, approvals, scoped execution
+- **Runtime combines both**: model reasons, then tools/skills execute real-world work
+
+> _Brain decides. Claws execute._
+
+<!--
+Speaker notes (main points):
+- I frame tools and skills as the lobster’s claws: this is how the agent acts.
+- I explain that skills package repeatable patterns on top of tools.
+- I emphasize that policy gates these actions for safety and control.
+- I tie it back to architecture: reasoning matters only when execution is reliable.
+-->
+---
 <!-- _header: "" -->
 
 <!-- _footer: "" -->
