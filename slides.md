@@ -315,23 +315,16 @@ Speaker notes (main points):
 
 **How a message finds its agent**
 
-```
-Incoming message
-      │
-      ▼
-  Peer match?  ──yes──▶  peer agent
-      │ no
-      ▼
-  Guild match? ──yes──▶  guild agent
-      │ no
-      ▼
-  Account match? ─yes──▶ account agent
-      │ no
-      ▼
-  Channel default ──────▶ fallback agent
-```
+![width:1120px](2026-02-28-22-27-bindings-diagram-provided.jpg)
 
 Predictable. Inspectable. No magic.
+
+<!--
+Speaker notes (main points):
+- Routing is deterministic and precedence-based.
+- Walk top-to-bottom: peer → guild/team → account → channel default.
+- Emphasize auditability: same input context routes the same way.
+-->
 
 ---
 <!-- _header: "" -->
