@@ -704,16 +704,19 @@ Speaker notes (main points):
 ## Context: what the model actually sees
 
 - System prompt (tools, skills list, runtime metadata, injected files)
-- Conversation history (messages + assistant/tool traces)
+- Session history (messages + assistant/tool traces)
+- Memory context (retrieved via `memory_search` and `memory_get`, not auto-loaded in full)
 - Attachments/tool outputs (files, images, command output)
 
 **Inspect + manage:** `/context list`, `/context detail`, `/status`, `/compact`
 
 <!--
 Speaker notes (main points):
-- I context = current model window; memory = durable files on disk.
-- I tool schemas count toward context even when not shown as plain text.
-- I `/compact` preserves continuity while reducing window pressure.
+- I explain context = current model window; memory = durable files on disk.
+- I call out the two memory tools explicitly: `memory_search` for semantic lookup and `memory_get` for direct file/path recall.
+- I clarify memory is brought in through retrieval/indexing and tools, not auto-loaded end-to-end.
+- I note tool schemas count toward context even when not shown as plain text.
+- I explain `/compact` preserves continuity while reducing window pressure.
 -->
 ---
 <!-- _header: "💾 State Plane (Sessions + Memory)" -->
@@ -726,6 +729,8 @@ Speaker notes (main points):
 - Compact old context safely
 - Budget token headroom intentionally
 
+Docs: https://docs.openclaw.ai/concepts/session-pruning#session-pruning
+
 <!--
 Speaker notes (main points):
 - I pruning affects prompt window, not durable transcript storage.
@@ -735,20 +740,78 @@ Speaker notes (main points):
 ---
 <!-- _header: "💾 State Plane (Sessions + Memory)" -->
 
-## Advanced Patterns
+## Memory Search: advanced config surface
 
-**Composable automation surfaces**
+- Configure under `agents.defaults.memorySearch` (not top-level)
+- Choose provider: `openai`, `gemini`, `voyage`, `mistral`, or `local`
+- Set fallback behavior explicitly (`fallback: "none"` for strict local)
 
-- Nodes (device actions)
-- Browser + canvas
-- Agent-to-agent pipelines
-- Cross-surface orchestration patterns
+```json
+{
+  "agents": {
+    "defaults": {
+      "memorySearch": {
+        "enabled": true,
+        "provider": "local",
+        "fallback": "openai"
+      }
+    }
+  }
+}
+```
 
 <!--
 Speaker notes (main points):
-- I present this as building blocks, not a checklist to use all at once.
-- I recommend starting with one trigger + one action + one notification path.
-- I mention policy/sandbox boundaries before enabling high-impact tools.
+- I call out the most common misconfig: putting memorySearch at top-level.
+- I explain provider choice as a quality/cost/privacy tradeoff.
+- I suggest explicit fallback settings so behavior is predictable in production.
+-->
+---
+<!-- _header: "💾 State Plane (Sessions + Memory)" -->
+
+## Vector Memory Search
+
+**What it is:** semantic retrieval over memory/session text using embeddings.
+
+**What it means:** the agent can find relevant past context by meaning, not just exact keywords.
+
+**Why it helps:** better recall, less prompt noise, and more consistent long-session performance.
+
+- Default backend indexes markdown memory files with embeddings
+- Session memory indexing can be enabled for transcript recall in search
+- Per-agent index/storage paths are isolated for safety and cleanliness
+
+⚠️ **QMD backend is experimental**
+- Optional backend: `memory.backend = "qmd"`
+- Use only if you specifically need QMD sidecar capabilities
+
+Docs: https://docs.openclaw.ai/concepts/memory#vector-memory-search
+
+<!--
+Speaker notes (main points):
+- I start with the high-level value: semantic retrieval keeps context relevant without loading everything.
+- I explain this improves quality and cost by pulling only useful memory chunks into context.
+- I explain default memory indexing is enough for most teams.
+- I define QMD clearly: QMD means a local-first memory/search sidecar backend used as an alternative indexing engine.
+- I call out that QMD support is experimental and should be adopted intentionally.
+- I emphasize per-agent isolation so memory and retrieval don't bleed across agents.
+-->
+---
+<!-- _header: "💾 State Plane (Sessions + Memory)" -->
+
+## Session persistence: what stays on disk
+
+- `sessions.json` stores mutable session metadata
+- `<sessionId>.jsonl` stores append-only transcript history
+- Maintenance policies control prune/cap/rotate/disk-budget behavior
+
+> _Prompt context is temporary; session and memory files are durable._
+
+<!--
+Speaker notes (main points):
+- I separate runtime context from durable storage.
+- I explain jsonl transcripts as the forensic source of truth.
+- I mention that pruning/compaction optimizes prompts, not historical durability.
 -->
 ---
 
