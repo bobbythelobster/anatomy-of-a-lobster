@@ -174,27 +174,6 @@ Speaker notes (main points):
 
 ---
 
-## Agenda
-
-1. 🗺️ **Architectural Overview** — system map + message lifecycle
-2. 🧭 **Control Plane (Gateway)** — routing, bindings, protocol
-3. ⚙️ **Execution Plane (Runtime)** — agent loop, tools, orchestration
-4. 🧩 **Extensibility + Action** — skills/plugins + builder blueprint
-5. 💾 **State Plane (Sessions + Memory)** — persistence, pruning, recall
-
-<br>
-
-> _20 minutes · hands-on architecture tour_
-
-<!--
-Speaker notes (main points):
-- I briefly preview the five sections and pacing.
-- I tell audience we will go map first, then implementation details.
-- I ask them to listen for one pattern they can reuse immediately.
--->
-
----
-
 ## What this audience asked for
 
 - How OpenClaw works **under the hood**
@@ -232,6 +211,27 @@ Speaker notes (main points):
 - I clarify what is out of scope: beginner install/setup steps.
 - I clarify what is in scope: architecture and repeatable build patterns.
 - I transition into section 1 overview.
+-->
+
+---
+
+## Agenda
+
+1. **Architectural Overview** — system map + message lifecycle
+2. **Control Plane (Gateway)** — routing, bindings, protocol
+3. **Execution Plane (Runtime)** — agent loop, tools, orchestration
+4. **Extensibility + Action** — skills/plugins + builder blueprint
+5. **State Plane (Sessions + Memory)** — persistence, pruning, recall
+
+<br>
+
+> _20 minutes · architecture tour_
+
+<!--
+Speaker notes (main points):
+- I briefly preview the five sections and pacing.
+- I tell audience we will go map first, then implementation details.
+- I ask them to listen for one pattern they can reuse immediately.
 -->
 
 ---
