@@ -351,6 +351,30 @@ Speaker notes (main points):
 - I position skills as the redistribution mechanism for agent feature sets — they're the NPM packages of the agent ecosystem.
 -->
 ---
+<!-- _header: "🗺️ Architectural Overview" -->
+
+## Architecture framing recap
+
+- **Spine**: Gateway routes signals and keeps state coherent
+- **Brain**: Agent Runtime reasons over context and decides actions
+- **Claws**: Tools + Skills execute work in the real world
+
+- The rest of the lobster anatomy is still in flux and being defined
+- This is a framing, not an official taxonomy
+- Hopefully this gives you a strong mental model for how OpenClaw works
+
+> _Use this as a practical map for building/debugging, not a rigid spec._
+
+<!--
+Speaker notes (main points):
+- I quickly recap our three anchors: spine, brain, claws.
+- I explain that this is intentionally a teaching frame, not an official architecture standard.
+- I acknowledge that OpenClaw evolves quickly, so labels will continue to shift.
+- I emphasize the goal: give people a mental model they can apply immediately.
+- I transition into control plane details with this shared vocabulary in place.
+-->
+
+---
 <!-- _header: "" -->
 
 <!-- _footer: "" -->
@@ -366,23 +390,6 @@ Speaker notes (main points):
 - I explain that control plane routing is deterministic.
 - I call out binding precedence as the decision rule.
 - I emphasize predictable, inspectable delivery paths.
--->
----
-<!-- _header: "🧭 Control Plane (Gateway)" -->
-
-## Multi-Agent Routing
-
-One gateway → **many isolated brains**
-
-- Per-agent workspace + sessions
-- Rule-based traffic split
-- Different model/persona/tool policy per agent
-
-<!--
-Speaker notes (main points):
-- I explain that isolation is the unlock: separate memory/auth/state avoids cross-contamination.
-- I call out routing dimensions: channel, account, peer, and guild.
-- I use this phrase: “one nervous system, many personalities.”
 -->
 ---
 <!-- _header: "🧭 Control Plane (Gateway)" -->
@@ -433,6 +440,23 @@ Speaker notes (main points):
 - I connect this back to troubleshooting: if continuity feels wrong, dmScope and key derivation are the first places I check.
 -->
 
+---
+<!-- _header: "🧭 Control Plane (Gateway)" -->
+
+## Multi-Agent Routing
+
+One gateway → **many isolated brains**
+
+- Per-agent workspace + sessions
+- Rule-based traffic split
+- Different model/persona/tool policy per agent
+
+<!--
+Speaker notes (main points):
+- I explain that isolation is the unlock: separate memory/auth/state avoids cross-contamination.
+- I call out routing dimensions: channel, account, peer, and guild.
+- I use this phrase: “one nervous system, many personalities.”
+-->
 ---
 <!-- _header: "" -->
 
