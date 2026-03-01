@@ -163,6 +163,13 @@ style: |
 
 By Sam Holmes
 
+<!--
+Speaker notes (main points):
+- Quick intro: this talk is a practical architecture walkthrough.
+- Set expectation: visual slides, deeper details in narration.
+- Invite audience to hold questions for section breaks.
+-->
+
 ---
 
 ## Agenda
@@ -177,6 +184,13 @@ By Sam Holmes
 
 > _20 minutes · hands-on architecture tour_
 
+<!--
+Speaker notes (main points):
+- Briefly preview the five sections and pacing.
+- Tell audience we will go map first, then implementation details.
+- Ask them to listen for one pattern they can reuse immediately.
+-->
+
 ---
 
 ## What this audience asked for
@@ -189,6 +203,13 @@ By Sam Holmes
 <br>
 
 > _This deck is organized around those four asks._
+
+<!--
+Speaker notes (main points):
+- Confirm this content came from audience interest areas.
+- Emphasize relevance: we are solving the questions they actually asked.
+- Transition into scope slide.
+-->
 
 ---
 
@@ -203,6 +224,13 @@ Quick setup content is intentionally skipped.
 <br>
 
 **Goal:** leave with a clear mental model you can build from.
+
+<!--
+Speaker notes (main points):
+- Clarify what is out of scope: beginner install/setup steps.
+- Clarify what is in scope: architecture and repeatable build patterns.
+- Transition into section 1 overview.
+-->
 
 ---
 <!-- _header: "" -->
@@ -228,6 +256,13 @@ A: Yes — first the map, then the path:
 
 ![width:1500px](2026-02-28-22-02-architecture-diagram-black-bg.png)
 
+<!--
+Speaker notes (main points):
+- Walk left to right: channels → gateway → runtime.
+- Keep this high-level; details come in next slides.
+- Emphasize “single gateway as source of truth.”
+-->
+
 ---
 <!-- _header: "🗺️ Architectural Overview" -->
 
@@ -241,6 +276,13 @@ A: Yes — first the map, then the path:
 6. Final response is delivered to channel
 
 > _This is the spine of everything else in the talk._
+
+<!--
+Speaker notes (main points):
+- Say this lifecycle is the core mental model for every feature.
+- Keep examples short: inbound message, run, tools, persistence, outbound reply.
+- Reference this flow again in later sections.
+-->
 ---
 <!-- _header: "🗺️ Architectural Overview" -->
 
@@ -278,6 +320,13 @@ Speaker notes (main points):
 ```
 
 > _Files are the interface. Readable, editable, version-controlled._
+
+<!--
+Speaker notes (main points):
+- Explain that behavior changes come from file edits, not redeploys.
+- Mention bootstrap files are injected into context on new sessions.
+- Stress auditability: markdown files are transparent and versionable.
+-->
 ---
 <!-- _header: "" -->
 
@@ -447,6 +496,13 @@ Speaker notes (main points):
 | `MEMORY.md` | Long-term curated memory |
 
 > _Change the files → change the agent. No redeployment needed._
+
+<!--
+Speaker notes (main points):
+- Call out that IDENTITY.md is part of the core contract.
+- Explain each file has a distinct job (rules, persona, user, tools, memory).
+- Reinforce fast iteration: edit files, rerun, observe behavior.
+-->
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
 
@@ -463,6 +519,13 @@ Speaker notes (main points):
 | Ops loop | Heartbeat checklist + cron for proactive tasks |
 
 > _If you can define these seven, you can replicate agents reliably._
+
+<!--
+Speaker notes (main points):
+- Position this as a checklist teams can copy.
+- Suggest starting minimal: one model, one skill, one routing path.
+- Mention boundaries early to avoid unsafe defaults.
+-->
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
 
@@ -499,6 +562,13 @@ Each has:
   • own channel bindings
   • own skill set
 ```
+
+<!--
+Speaker notes (main points):
+- Explain this is how one gateway supports multiple assistant personas.
+- Mention isolation benefits: cleaner context and safer operations.
+- Give one practical example (personal vs devbot routing).
+-->
 ---
 <!-- _header: "" -->
 
@@ -516,6 +586,13 @@ A: State plane covers:
 - Session model + pruning/compaction behavior
 - Multi-contact and group memory organization
 - Retrieval patterns that keep context focused
+-->
+
+<!--
+Speaker notes (main points):
+- Introduce state as the long-term quality layer.
+- Explain this section connects reliability, memory, and cost control.
+- Transition from architecture to operational discipline.
 -->
 ---
 <!-- _header: "💾 State Plane (Sessions + Memory)" -->
@@ -611,3 +688,10 @@ Speaker notes (main points):
 **Builder CTA:** Start with one agent, one skill, and one heartbeat loop.
 
 _Questions? Ask the lobster._
+
+<!--
+Speaker notes (main points):
+- Recap: gateway, routing, runtime, state, extensibility.
+- Encourage audience to ship one small working workflow first.
+- Point them to docs + GitHub as next action.
+-->
