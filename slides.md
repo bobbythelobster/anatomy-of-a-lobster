@@ -173,7 +173,7 @@ By Sam Holmes
 
 ---
 
-## What this audience asked for (from RSVP data)
+## What this audience asked for
 
 - How OpenClaw works **under the hood**
 - **Sub-agent orchestration** patterns that actually work
@@ -249,7 +249,7 @@ One gateway. Many channels. One agent brain.
 - **Channels**: Telegram, Discord, WhatsApp, iMessage, Signal, Slack, Email...
 - **Sessions**: per-user context, auth profiles, history
 - **Routing**: deterministic binding rules → right message to right agent
-- **Heartbeats**: scheduled pings to keep agents proactive
+- **Heartbeats & Cron**: scheduled pings and timed triggers to keep agents proactive
 
 ```json
 {
