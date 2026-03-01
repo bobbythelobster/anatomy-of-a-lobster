@@ -12,6 +12,7 @@ style: |
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     padding: 84px 72px 88px 72px;
+    font-size: 80%;
   }
 
   section::before {
@@ -82,13 +83,13 @@ style: |
     color: inherit;
   }
 
-  h1 { font-size: 42px; }
-  h2 { font-size: 32px; }
-  li { margin-bottom: 8px; }
+  h1 { font-size: 34px; }
+  h2 { font-size: 26px; }
+  li { margin-bottom: 6px; }
 
   .title-slide h1 {
-    font-size: 56px;
-    margin-bottom: 12px;
+    font-size: 45px;
+    margin-bottom: 10px;
   }
 
   section.center {
@@ -100,11 +101,11 @@ style: |
     background: rgba(255,255,255,0.15);
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 6px;
-    padding: 2px 12px;
-    font-size: 14px;
-    letter-spacing: 1px;
+    padding: 2px 10px;
+    font-size: 11px;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
 
   .diagram {
@@ -112,11 +113,11 @@ style: |
     background: rgba(0,0,0,0.45);
     border: 1px solid rgba(255,255,255,0.18);
     border-radius: 12px;
-    padding: 20px 24px;
-    font-size: 18px;
+    padding: 16px 20px;
+    font-size: 14px;
     text-shadow: none;
-    line-height: 1.8;
-    margin-top: 16px;
+    line-height: 1.6;
+    margin-top: 12px;
   }
 
   .two-col {
@@ -131,11 +132,11 @@ style: |
   }
 
   .section-label {
-    font-size: 13px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 1.6px;
     text-transform: uppercase;
     opacity: 0.6;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
   }
 
   section header {
@@ -143,8 +144,8 @@ style: |
     top: 12px;
     left: 28px;
     right: auto;
-    font-size: 22px;
-    letter-spacing: 0.4px;
+    font-size: 18px;
+    letter-spacing: 0.3px;
     text-transform: none;
     color: rgba(255, 255, 255, 0.82);
     text-shadow: none;
@@ -439,6 +440,7 @@ Speaker notes (main points):
 | `AGENTS.md` | How to behave, what rules to follow |
 | `SOUL.md` | Persona, tone, personality |
 | `USER.md` | Who you're talking to |
+| `IDENTITY.md` | Agent name, vibe, signature |
 | `TOOLS.md` | Local env: cameras, SSH, voice prefs |
 | `MEMORY.md` | Long-term curated memory |
 
@@ -451,7 +453,7 @@ Speaker notes (main points):
 | Component | What to define |
 |---|---|
 | Workspace | Dedicated folder for each agent (`~/.openclaw/<agent-name>/`) |
-| Identity files | `AGENTS.md`, `SOUL.md`, `USER.md`, `TOOLS.md`, `MEMORY.md` |
+| Identity files | `AGENTS.md`, `SOUL.md`, `USER.md`, `IDENTITY.md`, `TOOLS.md`, `MEMORY.md` |
 | Routing | Channel/user/guild bindings in gateway config |
 | Model profile | Default model + optional escalation strategy |
 | Skills | Minimal starter pack (1-3 skills) tied to mission |
@@ -535,6 +537,23 @@ Speaker notes (main points):
 - Explain source-of-truth = markdown files; model memory follows what’s written.
 - Contrast short-term context vs durable memory files.
 - Mention retrieval path: memory_search / memory_get.
+-->
+---
+<!-- _header: "💾 State Plane (Sessions + Memory)" -->
+
+## Context: what the model actually sees
+
+- System prompt (tools, skills list, runtime metadata, injected files)
+- Conversation history (messages + assistant/tool traces)
+- Attachments/tool outputs (files, images, command output)
+
+**Inspect + manage:** `/context list`, `/context detail`, `/status`, `/compact`
+
+<!--
+Speaker notes (main points):
+- Context = current model window; memory = durable files on disk.
+- Tool schemas count toward context even when not shown as plain text.
+- `/compact` preserves continuity while reducing window pressure.
 -->
 ---
 <!-- _header: "💾 State Plane (Sessions + Memory)" -->
