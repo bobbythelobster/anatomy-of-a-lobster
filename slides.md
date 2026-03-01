@@ -222,19 +222,7 @@ A: Yes — first the map, then the path:
 
 ## Architecture
 
-<div class="diagram">
-
-```
-  📱 Chat Apps          🌐 Gateway            🤖 Agent Runtime
-  ─────────────        ───────────            ─────────────────
-  Telegram    ─┐                              ┌─ Workspace
-  WhatsApp    ─┤──▶  WebSocket  ──▶  LLM  ──▶├─ Tools
-  Discord     ─┤     Sessions                 ├─ Skills
-  iMessage    ─┤     Routing                  └─ Memory
-  Signal      ─┘     Channels
-```
-
-</div>
+![width:1500px](2026-02-28-22-02-architecture-diagram-black-bg.png)
 
 One gateway. Many channels. One agent brain.
 
