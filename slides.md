@@ -567,24 +567,29 @@ Speaker notes (main points):
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
 
+<style scoped>
+section { display:flex; flex-flow:row wrap; align-items:center; }
+h2 { width:100%; }
+.left { flex:1; min-width:0; }
+.right { flex:0 0 40%; max-width:40%; }
+</style>
+
 ## Skills
 
-<div style="display:flex; gap:24px; align-items:center;">
-  <div style="flex:1; min-width:0;">
-    <p><strong>Packaged capability units</strong></p>
-    <pre><code>skills/
+<div class="left">
+  <p><strong>Packaged capability units</strong></p>
+  <pre><code>skills/
   weather/
     SKILL.md + scripts</code></pre>
-    <ul>
-      <li>Install from ClawHub</li>
-      <li>Or author locally</li>
-      <li>Agent loads on demand</li>
-    </ul>
-    <p>Reference: https://agentskills.io</p>
-  </div>
-  <div style="flex:0 0 40%; max-width:40%;">
-    <video src="skills-demo.mp4" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
-  </div>
+  <ul>
+    <li>Install from ClawHub</li>
+    <li>Or author locally</li>
+    <li>Agent loads on demand</li>
+  </ul>
+  <p>Reference: https://agentskills.io</p>
+</div>
+<div class="right">
+  <video src="skills-demo.mp4" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
 </div>
 
 <!--
