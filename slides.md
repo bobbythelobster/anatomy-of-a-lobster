@@ -284,7 +284,7 @@ Speaker notes (main points):
 
 ## The Gateway
 
-![bg right:40% contain](gateway-brain-lobster.jpg)
+![bg right:40% 90%](gateway-brain-lobster.jpg)
 
 **WebSocket control plane + session authority**
 
