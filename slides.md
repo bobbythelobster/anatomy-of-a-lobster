@@ -294,11 +294,7 @@ Speaker notes (main points):
 - Dispatches runs + returns replies
 
   </div>
-  <div style="flex:0 0 38%; max-width:38%;">
-
-![width:100% height:340px](gateway-brain-lobster.jpg)
-
-  </div>
+  <img src="gateway-brain-lobster.jpg" style="flex:0 0 38%; width:38%; height:340px; object-fit:cover;" />
 </div>
 
 <!--
