@@ -581,6 +581,8 @@ skills/
 - Or author locally
 - Agent loads on demand
 
+Reference: https://agentskills.io
+
 <!--
 Speaker notes (main points):
 - I explain that skills are the fastest path to repeatable capability.
@@ -813,6 +815,37 @@ Speaker notes (main points):
 - I explain jsonl transcripts as the forensic source of truth.
 - I mention that pruning/compaction optimizes prompts, not historical durability.
 -->
+---
+<!-- _header: "" -->
+
+## Final recap: Anatomy of a Lobster
+
+- **Spine (Gateway / Control Plane)**
+  - Deterministic routing keeps agent selection predictable
+  - Session-key strategy keeps continuity and isolation consistent
+
+- **Brain (Execution Plane / Runtime)**
+  - Heartbeats/crons provide proactive timing loops
+  - Hooks/webhooks + sub-agents provide scalable orchestration
+
+- **Claws (Extensibility + Action)**
+  - Skills package behavior quickly for fast iteration
+  - Plugins add new first-class tool capabilities
+
+- **State Plane (Sessions + Memory)**
+  - Structured memory improves recall quality
+  - Pruning + vector retrieval improve context efficiency and cost
+
+<!--
+Speaker notes (main points):
+- I emphasize predictability first: routing + session keys remove ambiguity in behavior.
+- I emphasize orchestration second: heartbeat/cron/hooks/sub-agents make systems proactive and scalable.
+- I emphasize extensibility third: skills for speed, plugins for platform-level capability growth.
+- I emphasize state quality fourth: memory structure + pruning + vector search impact response quality and cost.
+- I include the meta takeaway verbally: this is a practical build/debug framework, not fixed doctrine.
+- I invite the audience to apply this map immediately in their own deployments.
+-->
+
 ---
 
 <!-- _class: center -->
