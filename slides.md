@@ -284,7 +284,7 @@ Speaker notes (main points):
 
 ## The Gateway
 
-![bg right:40% 90%](gateway-brain-lobster.jpg)
+![bg right:40% 90%](spine.png)
 
 **WebSocket control plane + session authority**
 
@@ -294,7 +294,7 @@ Speaker notes (main points):
 
 <!--
 Speaker notes (main points):
-- I explain that the gateway is the always-on brain/router; everything passes through it.
+- I explain that the gateway is more like the spine (ventral nerve cord) than the brain — it connects everything and relays signals, but doesn't do the thinking itself.
 - I explain that deterministic routing is key: the same input rules produce predictable agent selection.
 - I explain that session ownership in the gateway is why history consistency holds.
 - I mention that cron/heartbeat are just additional ingress paths, not separate systems.
