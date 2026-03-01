@@ -284,7 +284,7 @@ Speaker notes (main points):
 
 ## The Gateway
 
-<div style="display:flex; gap:28px; align-items:flex-start;">
+<div style="display:flex; gap:28px; align-items:center;">
   <div style="flex:1; min-width:0;">
 
 **WebSocket control plane + session authority**
@@ -294,9 +294,9 @@ Speaker notes (main points):
 - Dispatches runs + returns replies
 
   </div>
-  <div style="width:42%;">
+  <div style="flex:0 0 38%; max-width:38%;">
 
-![width:100%](gateway-brain-lobster.jpg)
+![width:100% height:340px](gateway-brain-lobster.jpg)
 
   </div>
 </div>
