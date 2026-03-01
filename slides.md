@@ -304,6 +304,8 @@ Speaker notes (main points):
 
 ## Agent Runtime
 
+![bg right:40% 90%](gateway-brain-lobster.jpg)
+
 **The brain** — everything your agent knows and can do
 
 ```
