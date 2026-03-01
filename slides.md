@@ -253,7 +253,11 @@ Speaker notes (main points):
 ---
 <!-- _header: "🗺️ Architectural Overview" -->
 
-![height:414px](2026-02-28-22-02-architecture-diagram-black-bg.png)
+<div style="text-align:center">
+
+![height:520px](2026-02-28-22-02-architecture-diagram-black-bg.png)
+
+</div>
 
 <!--
 Speaker notes (main points):
@@ -371,7 +375,7 @@ Speaker notes (main points):
 
 **How a message finds its agent**
 
-![height:320px](2026-02-28-22-27-bindings-diagram-provided.jpg)
+![width:1120px height:320px](2026-02-28-22-27-bindings-diagram-provided.jpg)
 
 <!--
 Speaker notes (main points):
