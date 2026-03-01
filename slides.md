@@ -219,13 +219,9 @@ A: Yes — first the map, then the path:
 -->
 
 ---
-<!-- _header: "" -->
-
-## Architecture
+<!-- _header: "🗺️ Architectural Overview" -->
 
 ![width:1500px](2026-02-28-22-02-architecture-diagram-black-bg.png)
-
-One gateway. Many channels. One agent brain.
 
 ---
 <!-- _header: "🗺️ Architectural Overview" -->
