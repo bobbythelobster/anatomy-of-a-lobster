@@ -284,18 +284,13 @@ Speaker notes (main points):
 
 ## The Gateway
 
-<div style="display:flex; gap:28px; align-items:center;">
-  <div style="flex:1; min-width:0;">
+![bg right:40% contain](gateway-brain-lobster.jpg)
 
 **WebSocket control plane + session authority**
 
 - Ingests channels
 - Resolves routing + session
 - Dispatches runs + returns replies
-
-  </div>
-  <img src="gateway-brain-lobster.jpg" style="flex:0 0 38%; width:38%; height:340px; object-fit:cover;" />
-</div>
 
 <!--
 Speaker notes (main points):
