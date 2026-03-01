@@ -163,6 +163,8 @@ style: |
 
 By Sam Holmes
 
+Co-Authored by OpenClaw
+
 <!--
 Speaker notes (main points):
 - I quick intro: this talk is a practical architecture walkthrough.
@@ -617,40 +619,43 @@ Speaker notes (main points):
 **Capability surface**
 
 - Built-ins (fs, exec, web, messaging, media)
-- Skill tools (custom)
+- Skills package usage patterns + scripts
+- Plugins extend the tool catalog with new first-class tools
 - Policy decides what is callable
 
 <!--
 Speaker notes (main points):
-- I explain that tool availability is policy-gated, not prompt-gated.
+- I explain that built-ins are the default tool surface shipped with OpenClaw.
+- I clarify that skills usually package instructions and scripts, while plugins add new first-class tool definitions.
+- I explain that if we want truly new tool primitives across the platform, plugins are the extension path.
 - I mention layered controls: profile + allow/deny + sandbox/elevated rules.
 - I frame tools as the "hands" of the agent runtime.
 -->
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
 
-## Multi-Agent Setup in Practice
+## Multi-Agent Routing
 
-**One gateway, many personalities**
+**One gateway, many isolated agents**
 
+- Define multiple `agentId`s, each with its own workspace/state
+- Use bindings to route by channel/account/peer/guild
+- OpenClaw resolves by precedence, then falls back to default agent
+
+```text
+main   → personal assistant
+edgar  → dev/ops workflows
+devbot → community automation
 ```
-openclaw.json
-  ├── agent: "main"   → Claudine 🌸  (personal assistant)
-  ├── agent: "edgar"  → Edgar 🤖     (dev/ops agent)
-  └── agent: "devbot" → DevBot 🔧    (discord community bot)
 
-Each has:
-  • own workspace & memory
-  • own model config
-  • own channel bindings
-  • own skill set
-```
+Docs: https://docs.openclaw.ai/concepts/multi-agent
 
 <!--
 Speaker notes (main points):
-- I explain this is how one gateway supports multiple assistant personas.
-- I mention isolation benefits: cleaner context and safer operations.
-- I give one practical example (personal vs devbot routing).
+- I explain this as the high-level summary; full configuration options are extensive.
+- I emphasize isolation: each agent keeps separate context, memory, and auth scope.
+- I mention that routing rules decide which agent handles each inbound message.
+- I point the audience to the docs for full precedence and config examples.
 -->
 ---
 <!-- _header: "" -->
