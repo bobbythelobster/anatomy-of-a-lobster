@@ -140,9 +140,9 @@ style: |
 
 <!-- _class: center -->
 
-# Anatomy of a Lobster 🦞
-
 ![width:500px](audience-interest.jpg)
+
+# Anatomy of a Lobster 🦞
 
 ### How OpenClaw works under the hood
 
