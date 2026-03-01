@@ -6,13 +6,17 @@ backgroundColor: '#000000'
 style: |
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+  :root {
+    font-size: 20px;
+  }
+
   section {
     position: relative;
     font-family: 'Space Grotesk', sans-serif;
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     padding: 84px 72px 88px 72px;
-    font-size: 80%;
+    font-size: 1rem;
   }
 
   section::before {
@@ -83,12 +87,12 @@ style: |
     color: inherit;
   }
 
-  h1 { font-size: 34px; }
-  h2 { font-size: 26px; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.6rem; }
   li { margin-bottom: 6px; }
 
   .title-slide h1 {
-    font-size: 45px;
+    font-size: 2.5rem;
     margin-bottom: 10px;
   }
 
@@ -102,7 +106,7 @@ style: |
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 6px;
     padding: 2px 10px;
-    font-size: 11px;
+    font-size: 0.6rem;
     letter-spacing: 0.8px;
     text-transform: uppercase;
     margin-bottom: 12px;
@@ -114,7 +118,7 @@ style: |
     border: 1px solid rgba(255,255,255,0.18);
     border-radius: 12px;
     padding: 16px 20px;
-    font-size: 14px;
+    font-size: 0.75rem;
     text-shadow: none;
     line-height: 1.6;
     margin-top: 12px;
@@ -132,7 +136,7 @@ style: |
   }
 
   .section-label {
-    font-size: 10px;
+    font-size: 0.55rem;
     letter-spacing: 1.6px;
     text-transform: uppercase;
     opacity: 0.6;
@@ -144,7 +148,7 @@ style: |
     top: 12px;
     left: 28px;
     right: auto;
-    font-size: 18px;
+    font-size: 20px;
     letter-spacing: 0.3px;
     text-transform: none;
     color: rgba(255, 255, 255, 0.82);
@@ -316,9 +320,7 @@ Speaker notes (main points):
 
 **How a message finds its agent**
 
-![width:1120px](2026-02-28-22-27-bindings-diagram-provided.jpg)
-
-Predictable. Inspectable. No magic.
+![height:320px](2026-02-28-22-27-bindings-diagram-provided.jpg)
 
 <!--
 Speaker notes (main points):
