@@ -477,6 +477,42 @@ Speaker notes (main points):
 ---
 <!-- _header: "⚙️ Execution Plane (Runtime)" -->
 
+## Heartbeats & Cron
+
+**Proactive execution loops**
+
+- Heartbeat = periodic check-and-act loop
+- Cron = exact schedule for one-shot or recurring runs
+- Both execute through normal agent/runtime pathways
+
+<!--
+Speaker notes (main points):
+- I explain that both heartbeat and cron are runtime entry points, not separate assistants.
+- I distinguish by timing needs: heartbeat for batched drift-tolerant checks, cron for precise timing.
+- I mention that cron can target isolated runs while heartbeat keeps continuity in the main session.
+- I give examples: heartbeat for inbox+calendar triage, cron for exact reminders or weekly standups.
+-->
+---
+<!-- _header: "⚙️ Execution Plane (Runtime)" -->
+
+## Hooks & Webhooks
+
+**Event-driven execution**
+
+- Hooks run on internal lifecycle events (before/after key runtime phases)
+- Webhooks accept external triggers into the gateway
+- Together they connect OpenClaw to surrounding systems
+
+<!--
+Speaker notes (main points):
+- I explain internal hooks as lifecycle interception points for behavior shaping.
+- I explain webhooks as external ingress for automation from GitHub, CI, forms, and services.
+- I emphasize safety: auth, validation, and policy boundaries still apply to triggered runs.
+- I position this as the bridge from “assistant” to “automation platform.”
+-->
+---
+<!-- _header: "⚙️ Execution Plane (Runtime)" -->
+
 ## Sub-Agent Spawning
 
 **Parallel work, isolated context**
@@ -490,31 +526,14 @@ Main run
 ```
 
 - Spawn via `sessions_spawn`
-- Child sessions are isolated
+- Child sessions are isolated and non-blocking
 - Completion is push-based
 
 <!--
 Speaker notes (main points):
 - I explain why this is safer than one giant context: fewer collisions, lower token bloat.
-- I mention non-blocking behavior and orchestration pattern (spawn → continue → collect).
-- I use this practical line: “use subagents when tasks are parallelizable and independent.”
--->
----
-<!-- _header: "⚙️ Execution Plane (Runtime)" -->
-
-## Cron & Heartbeats
-
-**Proactive execution**
-
-- Heartbeat = periodic check loop
-- Cron = exact schedule
-- Both feed back into normal agent runs
-
-<!--
-Speaker notes (main points):
-- I distinguish by precision: heartbeat for batched checks, cron for exact timing.
-- I emphasize they are orchestration inputs, not separate assistant logic.
-- I give one concrete example each (heartbeat: inbox+calendar; cron: Monday standup).
+- I mention orchestration pattern: spawn, keep moving, then collect results.
+- I call out practical limits: use subagents when tasks are parallelizable and bounded.
 -->
 ---
 <!-- _header: "" -->
@@ -728,10 +747,10 @@ Speaker notes (main points):
 
 **Composable automation surfaces**
 
-- Hooks / webhooks
 - Nodes (device actions)
 - Browser + canvas
 - Agent-to-agent pipelines
+- Cross-surface orchestration patterns
 
 <!--
 Speaker notes (main points):
