@@ -241,6 +241,8 @@ Speaker notes (main points):
 
 # 🗺️ Architectural Overview
 
+![bg right:40% 90%](overview.png)
+
 <br>
 
 <div class="section-label">Section 1 of 5</div>
