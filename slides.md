@@ -381,6 +381,8 @@ Speaker notes (main points):
 
 # 🧭 Control Plane (Gateway)
 
+![bg right:42% 90%](spine.png)
+
 <br>
 
 <div class="section-label">Section 2 of 5</div>
@@ -464,6 +466,8 @@ Speaker notes (main points):
 
 # ⚙️ Execution Plane (Runtime)
 
+![bg right:42% 90%](gateway-brain-lobster.jpg)
+
 <br>
 
 <div class="section-label">Section 3 of 5</div>
@@ -541,6 +545,8 @@ Speaker notes (main points):
 <!-- _footer: "" -->
 
 # 🧩 Extensibility + Action
+
+![bg right:42% 90%](claws-diagram.png)
 
 <br>
 
