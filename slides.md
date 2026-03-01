@@ -355,6 +355,25 @@ Speaker notes (main points):
 ---
 <!-- _header: "🗺️ Architectural Overview" -->
 
+## Core config center: `openclaw.json`
+
+- Primary runtime config file for gateway, agents, tools, channels, and policies
+- Full path on this system:
+  - `/Users/claudine/.openclaw/openclaw.json`
+- Most architecture behavior we discussed is driven from this file
+
+> _If OpenClaw behavior changes, this is usually the first place to look._
+
+<!--
+Speaker notes (main points):
+- I explain that openclaw.json is the central control plane for behavior.
+- I connect this to the talk: routing, tools, subagents, memory, and safety are all configured here.
+- I call out the exact path so people know where to inspect or edit in real deployments.
+- I set expectation: docs + schema help, but this file is the operational source of truth.
+-->
+---
+<!-- _header: "🗺️ Architectural Overview" -->
+
 ## Architecture framing recap
 
 - **Spine**: Gateway routes signals and keeps state coherent
