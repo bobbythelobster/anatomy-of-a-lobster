@@ -612,29 +612,6 @@ Speaker notes (main points):
 ---
 <!-- _header: "🧩 Extensibility + Action" -->
 
-## Independent Agent Blueprint (copy this)
-
-| Component | What to define |
-|---|---|
-| Workspace | Dedicated folder for each agent (`~/.openclaw/<agent-name>/`) |
-| Identity files | `AGENTS.md`, `SOUL.md`, `USER.md`, `IDENTITY.md`, `TOOLS.md`, `MEMORY.md` |
-| Routing | Channel/user/guild bindings in gateway config |
-| Model profile | Default model + optional escalation strategy |
-| Skills | Minimal starter pack (1-3 skills) tied to mission |
-| Boundaries | Tool allowlists, approval rules, sensitive-action gates |
-| Ops loop | Heartbeat checklist + cron for proactive tasks |
-
-> _If you can define these seven, you can replicate agents reliably._
-
-<!--
-Speaker notes (main points):
-- I position this as a checklist teams can copy.
-- I suggest starting minimal: one model, one skill, one routing path.
-- I mention boundaries early to avoid unsafe defaults.
--->
----
-<!-- _header: "🧩 Extensibility + Action" -->
-
 ## The Tool System
 
 **Capability surface**
