@@ -676,6 +676,8 @@ Speaker notes (main points):
 
 # 💾 State Plane (Sessions + Memory)
 
+![bg right:40% 90%](under-the-sea.png)
+
 <br>
 
 <div class="section-label">Section 5 of 5</div>
