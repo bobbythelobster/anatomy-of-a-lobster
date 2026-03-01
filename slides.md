@@ -148,7 +148,7 @@ style: |
     top: 12px;
     left: 28px;
     right: auto;
-    font-size: 20px;
+    font-size: 1rem;
     letter-spacing: 0.3px;
     text-transform: none;
     color: rgba(255, 255, 255, 0.82);
