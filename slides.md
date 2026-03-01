@@ -140,15 +140,9 @@ style: |
 
 <!-- _class: center -->
 
-![width:500px](audience-interest.jpg)
+![width:500px](anatomy-of-a-lobster.png)
 
-# Anatomy of a Lobster 🦞
-
-### How OpenClaw works under the hood
-
-<br>
-
-**Presented by Sam Holmes**
+By Sam Holmes
 
 ---
 
