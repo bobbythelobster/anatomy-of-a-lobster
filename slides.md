@@ -396,22 +396,6 @@ Speaker notes (main points):
 ---
 <!-- _header: "🧭 Control Plane (Gateway)" -->
 
-## Bindings: Deterministic Routing
-
-**How a message finds its agent**
-
-![height:320px](2026-02-28-22-27-bindings-diagram-provided.jpg)
-
-<!--
-Speaker notes (main points):
-- I routing is deterministic and precedence-based.
-- I walk top-to-bottom: peer → guild/team → account → channel default.
-- I emphasize auditability: same input context routes the same way.
--->
-
----
-<!-- _header: "🧭 Control Plane (Gateway)" -->
-
 ## Session Keys: continuity and isolation
 
 - Agent-scoped key: `agent:<agentId>:...`
@@ -440,6 +424,26 @@ Speaker notes (main points):
   - I use `per-account-channel-peer` when I run multiple accounts and want strongest isolation.
 - I note the practical default for multi-account ops: `per-account-channel-peer` to avoid cross-account bleed.
 - I connect this back to troubleshooting: if continuity feels wrong, dmScope and key derivation are the first places I check.
+-->
+
+---
+<!-- _header: "🧭 Control Plane (Gateway)" -->
+
+![height:760px](2026-03-01-08-57-routing-precedence-precise.svg)
+
+<!--
+Speaker notes (main points):
+- I explain these eight items are routing match types (`matchedBy`), not sessions.
+- I walk the exact precedence order:
+  - 1) binding.peer: exact peer-level match.
+  - 2) binding.peer.parent: inherits parent peer context (for thread-like structures).
+  - 3) binding.guild+roles: guild scope plus role-aware match.
+  - 4) binding.guild: guild-level scope match without role refinement.
+  - 5) binding.team: team/workspace-level scope match.
+  - 6) binding.account: account-level match (critical for multi-account channels).
+  - 7) binding.channel: broad channel-level default.
+  - 8) default: final fallback agent when no binding matches.
+- I reinforce the model: route chooses agent first; then session key derivation handles continuity.
 -->
 
 ---

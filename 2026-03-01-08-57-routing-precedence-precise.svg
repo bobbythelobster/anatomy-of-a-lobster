@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#05070c"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .title { font: 700 48px 'Space Grotesk', Arial, sans-serif; fill: #fff; }
+      .subtitle { font: 500 24px 'Space Grotesk', Arial, sans-serif; fill: #c9d5e6; }
+      .box { fill: #0a1220; stroke: #5addff; stroke-width: 2.5; rx: 14; }
+      .text { font: 500 30px 'Space Grotesk', Arial, sans-serif; fill: #f7fbff; }
+      .arrow { stroke: #af91ff; stroke-width: 5; }
+      .note { font: 500 22px 'Space Grotesk', Arial, sans-serif; fill: #9cb3d1; }
+      .pill { fill: #111a2b; stroke: #2d4468; stroke-width: 1.5; rx: 10; }
+      .pilltext { font: 600 18px 'Space Grotesk', Arial, sans-serif; fill: #9ed8ff; }
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <text x="960" y="72" text-anchor="middle" class="title">OpenClaw Routing Precedence (Source-Accurate)</text>
+  <text x="960" y="108" text-anchor="middle" class="subtitle">resolve-route.ts matchedBy order: most specific → fallback default</text>
+
+  <rect x="720" y="136" width="480" height="34" class="pill"/>
+  <text x="960" y="159" text-anchor="middle" class="pilltext">Most specific first</text>
+
+  <g filter="url(#glow)">
+    <rect x="380" y="190" width="1160" height="78" class="box"/>
+    <text x="430" y="238" class="text">1. binding.peer</text>
+
+    <line x1="960" y1="272" x2="960" y2="304" class="arrow"/>
+    <polygon points="960,318 949,299 971,299" fill="#af91ff"/>
+
+    <rect x="380" y="314" width="1160" height="78" class="box"/>
+    <text x="430" y="362" class="text">2. binding.peer.parent</text>
+
+    <line x1="960" y1="396" x2="960" y2="428" class="arrow"/>
+    <polygon points="960,442 949,423 971,423" fill="#af91ff"/>
+
+    <rect x="380" y="438" width="1160" height="78" class="box"/>
+    <text x="430" y="486" class="text">3. binding.guild+roles</text>
+
+    <line x1="960" y1="520" x2="960" y2="552" class="arrow"/>
+    <polygon points="960,566 949,547 971,547" fill="#af91ff"/>
+
+    <rect x="380" y="562" width="1160" height="78" class="box"/>
+    <text x="430" y="610" class="text">4. binding.guild</text>
+
+    <line x1="960" y1="644" x2="960" y2="676" class="arrow"/>
+    <polygon points="960,690 949,671 971,671" fill="#af91ff"/>
+
+    <rect x="380" y="686" width="1160" height="78" class="box"/>
+    <text x="430" y="734" class="text">5. binding.team</text>
+
+    <line x1="960" y1="768" x2="960" y2="800" class="arrow"/>
+    <polygon points="960,814 949,795 971,795" fill="#af91ff"/>
+
+    <rect x="380" y="810" width="1160" height="78" class="box"/>
+    <text x="430" y="858" class="text">6. binding.account → 7. binding.channel → 8. default</text>
+  </g>
+
+  <text x="960" y="940" text-anchor="middle" class="note">Routing chooses agentId first; then session key is derived from channel/account/peer + dmScope.</text>
+</svg>
