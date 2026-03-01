@@ -569,25 +569,20 @@ Speaker notes (main points):
 
 ## Skills
 
-<div style="display:flex; gap:24px; align-items:flex-start;">
+<div style="display:flex; gap:24px; align-items:center;">
   <div style="flex:1; min-width:0;">
-
-**Packaged capability units**
-
-```
-skills/
+    <p><strong>Packaged capability units</strong></p>
+    <pre><code>skills/
   weather/
-    SKILL.md + scripts
-```
-
-- Install from ClawHub
-- Or author locally
-- Agent loads on demand
-
-Reference: https://agentskills.io
-
+    SKILL.md + scripts</code></pre>
+    <ul>
+      <li>Install from ClawHub</li>
+      <li>Or author locally</li>
+      <li>Agent loads on demand</li>
+    </ul>
+    <p>Reference: https://agentskills.io</p>
   </div>
-  <div style="width:42%;">
+  <div style="flex:0 0 40%; max-width:40%;">
     <video src="skills-demo.mp4" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
   </div>
 </div>
