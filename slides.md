@@ -569,6 +569,9 @@ Speaker notes (main points):
 
 ## Skills
 
+<div style="display:flex; gap:24px; align-items:flex-start;">
+  <div style="flex:1; min-width:0;">
+
 **Packaged capability units**
 
 ```
@@ -582,6 +585,12 @@ skills/
 - Agent loads on demand
 
 Reference: https://agentskills.io
+
+  </div>
+  <div style="width:42%;">
+    <video src="skills-demo.mp4" autoplay loop muted playsinline controls style="width:100%; border-radius:12px;"></video>
+  </div>
+</div>
 
 <!--
 Speaker notes (main points):
