@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="100%" stop-color="#03060b"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .title { font: 700 54px 'Space Grotesk', Arial, sans-serif; fill: #ffffff; }
+      .step { font: 500 34px 'Space Grotesk', Arial, sans-serif; fill: #f6f8fb; }
+      .box { fill: #09131f; stroke: #58dcff; stroke-width: 3; rx: 18; }
+      .arrow { stroke: #b08bff; stroke-width: 6; }
+    </style>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <g filter="url(#glow)">
+    <rect class="box" x="200" y="130" width="1520" height="105"/>
+    <text class="step" x="238" y="196">1. Message arrives from channel</text>
+
+    <line class="arrow" x1="960" y1="243" x2="960" y2="276"/><polygon points="960,292 947,270 973,270" fill="#b08bff"/>
+    <rect class="box" x="200" y="290" width="1520" height="105"/>
+    <text class="step" x="238" y="356">2. Gateway applies binding/routing rules</text>
+
+    <line class="arrow" x1="960" y1="403" x2="960" y2="436"/><polygon points="960,452 947,430 973,430" fill="#b08bff"/>
+    <rect class="box" x="200" y="450" width="1520" height="105"/>
+    <text class="step" x="238" y="516">3. Session key is resolved (or created)</text>
+
+    <line class="arrow" x1="960" y1="563" x2="960" y2="596"/><polygon points="960,612 947,590 973,590" fill="#b08bff"/>
+    <rect class="box" x="200" y="610" width="1520" height="105"/>
+    <text class="step" x="238" y="676">4. Agent loop runs (model + tools)</text>
+
+    <line class="arrow" x1="960" y1="723" x2="960" y2="756"/><polygon points="960,772 947,750 973,750" fill="#b08bff"/>
+    <rect class="box" x="200" y="770" width="1520" height="105"/>
+    <text class="step" x="238" y="836">5. Tool outputs + assistant reply are persisted</text>
+
+    <line class="arrow" x1="960" y1="883" x2="960" y2="916"/><polygon points="960,932 947,910 973,910" fill="#b08bff"/>
+    <rect class="box" x="200" y="930" width="1520" height="105"/>
+    <text class="step" x="238" y="996">6. Final response is delivered to channel</text>
+  </g>
+</svg>
